@@ -64,7 +64,7 @@
         /* --- HERO SECTION --- */
         .hero { 
             position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(99, 25, 25, 0.7)), url('equipe.png') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(99, 25, 25, 0.7)), url('IMG_9846.jpg') center/cover no-repeat;
             height: 100vh; min-height: 600px; display: flex; flex-direction: column; justify-content: center;
             color: var(--blanc); text-align: center;
             border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
@@ -104,11 +104,16 @@
         .impact-item h3 { color: var(--bordeaux); font-size: 3.5rem; font-weight: 900; margin-bottom: 5px; line-height: 1; }
         .impact-item p { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #E0E0E0; }
 
-        /* --- INFOGRAPHIE --- */
+        /* --- INFOGRAPHIE & TRANSPARENCE --- */
         .infographie { padding: 0 20px 100px 20px; text-align: center; background-color: var(--beige-fond); }
         .infographie h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; color: var(--noir); margin-bottom: 40px; }
+        
         .image-campagne { max-width: 950px; margin: 0 auto; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); overflow: hidden; border-bottom: 10px solid var(--bordeaux); transition: transform 0.4s ease; }
         .image-campagne:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -12px rgba(0,0,0,0.2); }
+        
+        .transparence-texte { max-width: 850px; margin: 50px auto 0 auto; background-color: var(--blanc); padding: 45px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); text-align: center; }
+        .transparence-texte p { font-size: 1.15rem; color: var(--gris-texte); margin-bottom: 20px; line-height: 1.7; }
+        .transparence-texte strong { color: var(--bordeaux); }
 
         /* --- ACTIONS (Cartes Premium) --- */
         .actions { padding: 120px 20px; background-color: var(--blanc); border-radius: 50px 50px 0 0; }
@@ -141,6 +146,7 @@
             .hero { height: auto; padding: 180px 20px 120px 20px; }
             .impact-banner { border-radius: 25px; padding: 50px 20px; }
             .actions-grid { gap: 30px; }
+            .transparence-texte { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -150,7 +156,7 @@
     <header id="header">
         <div class="container nav-content">
             <a href="#" class="logo">
-                <img src="logo.png" alt="100seSupport Logo">
+                <img src="IMG_9849.png" alt="100seSupport Logo">
             </a>
             <a href="#don" class="btn header-btn">Soutenir</a>
         </div>
@@ -159,9 +165,9 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-subtitle reveal">Le bien est facile</div>
-            <h1 class="reveal delay-1">Achai Asaan Hai</h1>
-            <p class="reveal delay-2">Apporter une aide vitale aux femmes, aux orphelins et aux familles démunies du Pakistan. Depuis la France, rejoignez notre chaîne de solidarité : chaque geste compte, chaque don sauve des vies.</p>
+            <div class="hero-subtitle reveal">Achai Asaan Hai</div>
+            <h1 class="reveal delay-1">Le bien est facile</h1>
+            <p class="reveal delay-2">Apporter une aide vitale aux femmes, aux orphelins et aux familles démunies. Chaque geste compte, chaque don sauve des vies.</p>
             <div class="hero-buttons reveal delay-3">
                 <a href="#don" class="btn">Faire un don</a>
                 <a href="#histoire" class="btn btn-outline">Notre Histoire</a>
@@ -174,7 +180,7 @@
         <div class="container">
             <div class="badge reveal">Notre Origine</div>
             <h2 class="reveal delay-1">Un pont de solidarité entre la France et le Pakistan</h2>
-            <p class="reveal delay-2">Initiative caritative créée en 2021 au cœur du <span class="highlight-text">Pakistan</span>, 100seSupport est née d'une urgence : agir au plus près des populations vulnérables. Sur le terrain, notre équipe locale se mobilise au quotidien pour soutenir les femmes isolées, protéger les orphelins et nourrir les familles oubliées. Une aide vitale, remise de la main à la main, sans intermédiaire.</p>
+            <p class="reveal delay-2">Initiative caritative créée en 2021 au cœur du <span class="highlight-text">Pakistan</span>, 100seSupport est née d'une urgence : agir au plus près des populations vulnérables. Sur le terrain, notre équipe locale se mobilise pour soutenir les femmes isolées, protéger les orphelins et nourrir les familles oubliées. Une aide vitale, transmise directement de la main à la main, sans intermédiaire.</p>
             <p class="reveal delay-3">Face à l'urgence de la situation, l'association accélère son développement avec la création de <span class="highlight-text">100seSupport France</span>. Notre ambition : bâtir une puissante chaîne de solidarité internationale pour décupler notre force d'action, et redonner un avenir aux enfants et aux mères qui ont tout perdu.</p>
         </div>
     </section>
@@ -192,9 +198,9 @@
     <section class="constat">
         <div class="container">
             <div class="badge reveal">L'Urgence</div>
-            <p class="reveal delay-1" style="font-size: 1.4rem; font-weight: 700; color: var(--noir);">Selon de récentes estimations,</p>
+            <p class="reveal delay-1" style="font-size: 1.4rem; font-weight: 700; color: var(--noir);">Selon les estimations les plus récentes,</p>
             <div class="chiffre-choc reveal delay-2">plus de 55 millions</div>
-            <p class="constat-texte reveal delay-3">de personnes au Pakistan survivent aujourd'hui sous le seuil de pauvreté extrême. Pour de nombreuses familles, l'accès à un repas ou à de l'eau potable est un combat de chaque jour.</p>
+            <p class="constat-texte reveal delay-3">de personnes au Pakistan vivent aujourd’hui dans l’extrême pauvreté. Pour des millions de familles, trouver de quoi se nourrir ou accéder à l’eau potable reste chaque jour un défi.</p>
         </div>
     </section>
 
@@ -218,12 +224,20 @@
         </section>
     </div>
 
-    <!-- INFOGRAPHIE -->
+    <!-- INFOGRAPHIE & MESSAGE DE TRANSPARENCE (Refondu) -->
     <section class="infographie" id="campagne">
         <div class="container">
             <h2 class="reveal">Transparence totale de nos actions</h2>
+            
             <div class="image-campagne reveal delay-1">
                 <img src="image_d94126.png" alt="Objectifs de la cagnotte et composition d'un colis">
+            </div>
+
+            <!-- NOUVEAU BLOC DE TRANSPARENCE -->
+            <div class="transparence-texte reveal delay-2">
+                <p>La transparence est le cœur de notre engagement. C'est pourquoi <strong>absolument toutes les photos et vidéos de nos distributions sur le terrain sont documentées et directement accessibles sur notre page Instagram</strong>. Vous pouvez y suivre concrètement l'impact de chaque don !</p>
+                <p>Vous avez une question sur nos actions ou souhaitez échanger avec notre équipe ? <strong>N'hésitez pas à nous envoyer un message privé.</strong> Nous nous ferons un véritable plaisir de vous répondre, car votre confiance nous est précieuse.</p>
+                <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn" style="margin-top: 20px;">Voir nos vidéos sur Instagram</a>
             </div>
         </div>
     </section>
@@ -240,7 +254,7 @@
                 <!-- CARTE 1 -->
                 <div class="carte-action reveal delay-1">
                     <div class="carte-img">
-                        <img src="colis.png" alt="Distribution de colis alimentaire">
+                        <img src="IMG_9845.jpg" alt="Distribution de colis alimentaire">
                     </div>
                     <div class="carte-content">
                         <span class="tag">Urgence Alimentaire</span>
@@ -252,7 +266,7 @@
                 <!-- CARTE 2 -->
                 <div class="carte-action reveal delay-2">
                     <div class="carte-img">
-                        <img src="puits.png" alt="Construction de pompes à eau">
+                        <img src="IMG_9847.jpg" alt="Construction de pompes à eau">
                     </div>
                     <div class="carte-content">
                         <span class="tag">Accès à l'eau</span>
