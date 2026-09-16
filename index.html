@@ -3,104 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100seSupport | Initiative Caritative</title>
-    <!-- Police professionnelle similaire à celle des grandes ONG -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>100seSupport France | Achai Asaan Hai</title>
+    <!-- Police Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIABLES (Inspiration MSF) --- */
+        /* --- COULEURS 100seSupport --- */
         :root {
-            --rouge-ong: #E3000F; /* Le rouge caractéristique type MSF */
-            --noir-texte: #1A1A1A;
-            --gris-fond: #F5F5F5;
-            --gris-texte: #4A4A4A;
+            --rouge-100se: #A81C1C; 
+            --noir-100se: #0A0A0A;  
+            --gris-clair: #FDF8F5; /* Un beige très clair inspiré de votre infographie */
+            --texte-gris: #333333;
         }
 
         /* --- BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { color: var(--noir-texte); line-height: 1.6; background-color: #FFFFFF; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { color: var(--texte-gris); line-height: 1.6; background-color: #FFFFFF; }
         a { text-decoration: none; transition: all 0.3s ease; }
         img { max-width: 100%; display: block; object-fit: cover; }
-        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         /* --- BOUTONS --- */
         .btn-don { 
-            background-color: var(--rouge-ong); color: #FFFFFF; 
-            padding: 12px 30px; font-weight: 700; font-size: 1rem;
-            text-transform: uppercase; letter-spacing: 1px; display: inline-block;
+            background-color: var(--rouge-100se); color: #FFFFFF; 
+            padding: 14px 35px; font-weight: 700; font-size: 1rem;
+            border-radius: 50px; display: inline-block;
+            box-shadow: 0 4px 15px rgba(168, 28, 28, 0.3);
         }
-        .btn-don:hover { background-color: #B3000C; }
+        .btn-don:hover { background-color: #851313; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(168, 28, 28, 0.4); }
         
-        .btn-outline {
-            border: 2px solid var(--noir-texte); color: var(--noir-texte);
-            padding: 12px 30px; font-weight: 700; text-transform: uppercase; display: inline-block;
-        }
-        .btn-outline:hover { background-color: var(--noir-texte); color: #FFFFFF; }
-
-        /* --- HEADER (Navigation épurée) --- */
+        /* --- HEADER --- */
         header { 
-            background: #FFFFFF; border-bottom: 1px solid #EAEAEA;
-            position: sticky; top: 0; z-index: 1000; padding: 15px 0;
+            background: #FFFFFF; 
+            position: sticky; top: 0; z-index: 1000; padding: 10px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 900; color: var(--noir-texte); text-transform: uppercase; }
-        .logo span { color: var(--rouge-ong); }
+        .logo img { height: 60px; width: auto; } /* Intégration de votre logo */
 
         /* --- HERO SECTION --- */
-        /* Fond sombre avec image de l'équipe ou du terrain */
         .hero { 
             position: relative;
-            background: url('https://images.unsplash.com/photo-1593113565637-5271d0738f6c?q=80&w=2000&auto=format&fit=crop') center/cover;
-            padding: 150px 20px; color: #FFFFFF;
+            background: linear-gradient(rgba(10,10,10,0.8), rgba(168, 28, 28, 0.6)), url('equipe.png') center/cover;
+            padding: 120px 20px; color: #FFFFFF;
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            text-align: center;
         }
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.6); /* Calque sombre pour lire le texte */
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 400; max-width: 800px; margin-left: auto; margin-right: auto; }
+
+        /* --- TITRES --- */
+        .titre-noir-bloc {
+            background-color: var(--noir-100se); color: #FFFFFF;
+            display: inline-block; padding: 8px 25px; font-size: 1.5rem;
+            font-weight: 800; margin-bottom: 20px;
         }
-        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; text-align: center; }
-        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.1; text-transform: uppercase; }
-        .hero p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; }
+        .titre-souligne {
+            font-size: 2rem; color: var(--noir-100se); font-weight: 800;
+            margin-bottom: 30px; display: inline-block;
+            border-bottom: 4px solid var(--rouge-100se); padding-bottom: 5px;
+        }
 
-        /* --- SECTION INTRODUCTION --- */
-        .intro { padding: 80px 20px; text-align: center; background-color: #FFFFFF; }
-        .intro-text { max-width: 800px; margin: 0 auto; }
-        .intro h2 { font-size: 2.5rem; color: var(--rouge-ong); margin-bottom: 20px; font-weight: 900; text-transform: uppercase; }
-        .intro p { font-size: 1.1rem; color: var(--gris-texte); margin-bottom: 15px; }
-        .intro-citation { font-style: italic; font-weight: 500; font-size: 1.3rem; color: var(--noir-texte); margin-top: 30px; border-left: 4px solid var(--rouge-ong); padding-left: 20px; text-align: left; }
+        /* --- SECTION CONSTAT --- */
+        .constat { padding: 80px 20px; text-align: center; background-color: #FFFFFF; }
+        .texte-gros-rouge { color: var(--rouge-100se); font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+        .constat p { font-size: 1.2rem; margin-bottom: 20px; font-weight: 600; }
 
-        /* --- SECTION CHIFFRES / IMPACT --- */
-        .impact { background-color: var(--noir-texte); color: #FFFFFF; padding: 60px 20px; }
-        .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
-        .impact-item h3 { font-size: 4rem; font-weight: 900; color: var(--rouge-ong); line-height: 1; margin-bottom: 10px; }
-        .impact-item p { font-size: 1.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- SECTION NOS ACTIONS (Style "Cartes Projets" de MSF) --- */
-        .actions { background-color: var(--gris-fond); padding: 100px 20px; }
-        .section-header { margin-bottom: 50px; text-align: center; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
-        .section-header .line { height: 4px; width: 60px; background-color: var(--rouge-ong); margin: 0 auto; }
+        /* --- SECTION CAMPAGNE & TRANSPARENCE (Nouvelle section) --- */
+        .campagne { background-color: var(--gris-clair); padding: 80px 20px; }
+        .campagne-box {
+            background: #FFFFFF; border-radius: 20px; padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 8px solid var(--rouge-100se);
+        }
+        .campagne-header { text-align: center; margin-bottom: 40px; }
+        .campagne-header h2 { color: var(--rouge-100se); font-size: 2.2rem; font-weight: 900; }
         
-        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1140px; margin: 0 auto; }
-        .card { background-color: #FFFFFF; transition: transform 0.3s ease; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .card-img { height: 250px; width: 100%; overflow: hidden; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; }
-        .card-content { padding: 30px; }
-        .card-tag { color: var(--rouge-ong); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; display: block; }
-        .card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; }
-        .card p { color: var(--gris-texte); margin-bottom: 20px; font-size: 1rem; }
+        .prix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+        .prix-carte { border: 2px dashed #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; }
+        .prix-carte h3 { font-size: 1.3rem; color: var(--noir-100se); margin-bottom: 10px; }
+        .prix-carte .montant { font-size: 2.5rem; font-weight: 900; color: var(--rouge-100se); margin-bottom: 10px; }
+        .prix-carte p { font-size: 1rem; color: #555; }
 
-        /* --- FOOTER / CALL TO ACTION --- */
-        footer { background-color: var(--noir-texte); color: #FFFFFF; padding: 80px 20px 40px; text-align: center; }
-        .footer-cta h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
-        .footer-cta p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px auto; color: #CCCCCC; }
-        .footer-bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid #333333; font-size: 0.9rem; color: #888888; }
-        .footer-bottom a { color: #FFFFFF; margin: 0 10px; }
+        .compo-titre { text-align: center; font-weight: 800; font-size: 1.4rem; margin-bottom: 20px; }
+        .compo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px; text-align: center; }
+        .compo-item { background: var(--gris-clair); padding: 15px; border-radius: 10px; }
+        .compo-item span { display: block; font-weight: 800; color: var(--rouge-100se); font-size: 1.1rem; }
+        .compo-item p { font-size: 0.9rem; margin-top: 5px; font-weight: 600; }
+
+        /* --- NOS ACTIONS EN IMAGES --- */
+        .actions { padding: 100px 20px; text-align: center; }
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; text-align: left; }
+        .card { background-color: #FFFFFF; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .card-img { height: 300px; width: 100%; }
+        .card-content { padding: 30px; }
+        .card h3 { font-size: 1.4rem; font-weight: 800; color: var(--noir-100se); margin-bottom: 15px; }
+        .card .highlight { color: var(--rouge-100se); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 10px; }
+
+        /* --- FOOTER --- */
+        footer { background-color: var(--noir-100se); color: #FFFFFF; padding: 80px 20px 40px; text-align: center; }
+        .footer-cta h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
+        .footer-cta p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto; color: #CCCCCC; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .impact-grid { grid-template-columns: 1fr; }
-            .intro h2 { font-size: 2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .prix-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -109,97 +115,95 @@
     <!-- HEADER -->
     <header>
         <div class="container nav-content">
-            <div class="logo">100se<span>Support</span></div>
+            <div class="logo">
+                <img src="logo.png" alt="Logo 100seSupport">
+            </div>
             <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn-don">Soutenir</a>
         </div>
     </header>
 
-    <!-- HERO SECTION (Bannière principale) -->
+    <!-- HERO SECTION (Utilise equipe.png en fond) -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Rendre l'espoir accessible</h1>
-            <p>De la France au Pakistan, 100seSupport apporte une aide d'urgence médicale, alimentaire et sanitaire aux populations les plus précaires.</p>
-            <a href="#actions" class="btn-don">Découvrir nos actions</a>
-        </div>
-    </section>
-
-    <!-- INTRO / LE CONSTAT -->
-    <section class="intro">
-        <div class="container intro-text">
-            <h2>L'urgence d'agir</h2>
-            <p>Selon différentes estimations, <strong>plus de 55 millions de personnes au Pakistan</strong> vivent sous le seuil de pauvreté. De nombreuses familles rencontrent des difficultés pour subvenir à leurs besoins essentiels, notamment l'accès à l'alimentation et à l'eau potable.</p>
-            <p>100seSupport est une initiative caritative créée en 2021 au Pakistan, dont la mission est d'apporter une aide concrète aux familles. Aujourd'hui, l'association se développe en France afin de mobiliser davantage de soutien.</p>
-            
-            <div class="intro-citation">
-                « Achai Asaan Hai — Le bien est facile. Et quiconque sauve une vie, c'est comme s'il avait sauvé l'humanité tout entière. »
-            </div>
-        </div>
-    </section>
-
-    <!-- CHIFFRES / IMPACT -->
-    <section class="impact">
-        <div class="container impact-grid">
-            <div class="impact-item">
-                <h3>60+</h3>
-                <p>Familles aidées</p>
-            </div>
-            <div class="impact-item">
-                <h3>3</h3>
-                <p>Puits construits</p>
-            </div>
-            <div class="impact-item">
-                <h3>100%</h3>
-                <p>Action terrain</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- NOS ACTIONS (Style Cartes MSF) -->
-    <section id="actions" class="actions">
         <div class="container">
-            <div class="section-header">
-                <h2>Nos Interventions</h2>
-                <div class="line"></div>
+            <h1>Achai Asaan Hai</h1>
+            <p>Apporter une aide concrète aux familles vivant dans la précarité au Pakistan. Rejoignez notre chaîne de solidarité depuis la France.</p>
+            <a href="#campagne" class="btn-don" style="background-color: #FFFFFF; color: var(--rouge-100se);">Notre dernière campagne</a>
+        </div>
+    </section>
+
+    <!-- SECTION CONSTAT -->
+    <section class="constat">
+        <div class="container">
+            <div class="titre-noir-bloc">Le constat :</div>
+            <p style="font-weight: 400;">Selon différentes estimations,</p>
+            <div class="texte-gros-rouge">plus de 55 millions</div>
+            <p style="font-weight: 400;">de personnes au Pakistan vivent sous le seuil de pauvreté.</p>
+            <p><strong>De nombreuses familles rencontrent des difficultés pour subvenir à leurs besoins essentiels, notamment l'accès à l'alimentation.</strong></p>
+        </div>
+    </section>
+
+    <!-- NOUVELLE SECTION : TRANSPARENCE & COÛTS -->
+    <section class="campagne" id="campagne">
+        <div class="container">
+            <div class="campagne-box">
+                <div class="campagne-header">
+                    <h2>L'impact de vos dons</h2>
+                    <p>Découvrez comment votre générosité se transforme en aide vitale sur le terrain.</p>
+                </div>
+
+                <div class="prix-grid">
+                    <div class="prix-carte">
+                        <h3>Alimentation pour 1 mois</h3>
+                        <div class="montant">13 €</div>
+                        <p>Le prix d'un colis alimentaire permettant de nourrir toute une famille.</p>
+                    </div>
+                    <div class="prix-carte">
+                        <h3>Accès à l'eau potable</h3>
+                        <div class="montant">45 €</div>
+                        <p>Le prix de construction d'une pompe à eau manuelle dans un village.</p>
+                    </div>
+                </div>
+
+                <div class="compo-titre">Que contient un colis à 13 € ?</div>
+                <div class="compo-grid">
+                    <div class="compo-item"><span>15 KG</span><p>de Farine</p></div>
+                    <div class="compo-item"><span>5 KG</span><p>de Riz</p></div>
+                    <div class="compo-item"><span>2.5 KG</span><p>de Sucre</p></div>
+                    <div class="compo-item"><span>2.5 KG</span><p>de Lentilles</p></div>
+                    <div class="compo-item"><span>1 Pack</span><p>d'Épices</p></div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- NOS ACTIONS SUR LE TERRAIN -->
+    <section class="actions">
+        <div class="container">
+            <h2 class="titre-souligne">Nos Réalisations</h2>
             
             <div class="actions-grid">
                 
-                <!-- CARTE 1 : COLIS ALIMENTAIRES -->
+                <!-- ACTION 1 : COLIS -->
                 <div class="card">
                     <div class="card-img">
-                        <!-- ⚠️ UTILISEZ VOTRE IMAGE "image_3.png" ICI -->
-                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" alt="Enfants recevant un colis alimentaire">
+                        <img src="colis.png" alt="Distribution de colis">
                     </div>
                     <div class="card-content">
-                        <span class="card-tag">Urgence Alimentaire</span>
-                        <h3>Colis de première nécessité</h3>
-                        <p>Lutte contre la précarité nutritionnelle. Depuis notre création, plus de 60 familles ont pu bénéficier de nos colis alimentaires pour subvenir à leurs besoins vitaux.</p>
+                        <span class="highlight">Plus de 60 familles</span>
+                        <h3>ont pu bénéficier de colis</h3>
+                        <p>Nous distribuons des denrées de première nécessité (farine, sucre, riz, lentilles) aux foyers les plus touchés par la précarité.</p>
                     </div>
                 </div>
 
-                <!-- CARTE 2 : PUITS & EAU -->
+                <!-- ACTION 2 : PUITS -->
                 <div class="card">
                     <div class="card-img">
-                        <!-- ⚠️ UTILISEZ VOTRE IMAGE "image_4.png" ICI -->
-                        <img src="https://images.unsplash.com/photo-1541819349007-882470725227?q=80&w=1000&auto=format&fit=crop" alt="Enfant buvant à un puits">
+                        <img src="puits.png" alt="Enfants utilisant une pompe à eau">
                     </div>
                     <div class="card-content">
-                        <span class="card-tag">Accès à l'eau</span>
-                        <h3>Construction de puits</h3>
-                        <p>L'eau est source de vie. Nous avons déjà financé et supervisé la construction de 3 puits dans des villages isolés, garantissant un accès durable à une eau saine.</p>
-                    </div>
-                </div>
-
-                <!-- CARTE 3 : SOINS MÉDICAUX -->
-                <div class="card">
-                    <div class="card-img">
-                        <!-- Image d'illustration médicale -->
-                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1000&auto=format&fit=crop" alt="Soins médicaux">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-tag">Santé</span>
-                        <h3>Soins & Médicaments</h3>
-                        <p>Fourniture de médicaments et soutien aux soins de santé de première nécessité pour les personnes n'ayant aucun accès aux hôpitaux ou aux traitements locaux.</p>
+                        <span class="highlight">Et 3 puits</span>
+                        <h3>ont pu être construits</h3>
+                        <p>L'installation de pompes à eau manuelles dans les zones reculées garantit un accès vital et durable à l'eau potable.</p>
                     </div>
                 </div>
 
@@ -207,20 +211,12 @@
         </div>
     </section>
 
-    <!-- FOOTER / CALL TO ACTION -->
+    <!-- FOOTER -->
     <footer>
         <div class="container footer-cta">
-            <h2>Rejoignez notre chaîne de solidarité</h2>
-            <p>Vos dons sont essentiels pour nous permettre de poursuivre nos actions d'urgence au Pakistan. Chaque participation fait la différence.</p>
-            
-            <!-- Lien vers votre Instagram ou votre cagnotte (HelloAsso, CotizUp, etc.) -->
-            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn-don">Faire un don</a>
-            
-            <div class="footer-bottom">
-                &copy; 2024 100seSupport France. Association caritative.
-                <br><br>
-                <a href="https://www.instagram.com/100sesupport.fr" target="_blank">Suivez-nous sur Instagram (@100sesupport.fr)</a>
-            </div>
+            <h2>Faites partie du changement</h2>
+            <p>100 % de vos dons financent directement nos actions sur le terrain. Ensemble, le bien est facile.</p>
+            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn-don">Faire un don maintenant</a>
         </div>
     </footer>
 
