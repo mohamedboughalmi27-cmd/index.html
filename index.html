@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>100seSupport France | Solidarité Pakistan</title>
     <!-- Police Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -20,132 +20,116 @@
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
-        body { color: var(--gris-texte); line-height: 1.6; background-color: var(--beige-fond); overflow-x: hidden; }
+        body { color: var(--gris-texte); line-height: 1.6; background-color: var(--beige-fond); overflow-x: hidden; transition: all 0.3s; }
         a { text-decoration: none; transition: all 0.3s ease; }
         img { max-width: 100%; display: block; object-fit: cover; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- CLASSES D'ANIMATION (SCROLL REVEAL) --- */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        /* --- URDU FONT ADJUSTMENTS --- */
+        body.lang-ur { font-family: 'Arial', sans-serif; font-size: 1.1em; line-height: 1.8; }
+        body.lang-ur h1, body.lang-ur h2, body.lang-ur h3 { font-weight: bold; }
+
+        /* --- CLASSES D'ANIMATION --- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.15s; }
-        .delay-2 { transition-delay: 0.3s; }
-        .delay-3 { transition-delay: 0.45s; }
 
         /* --- BOUTONS --- */
         .btn {
             background-color: var(--bordeaux); color: var(--blanc);
-            padding: 16px 36px; font-weight: 700; font-size: 1rem;
+            padding: 14px 30px; font-weight: 700; font-size: 1rem;
             border-radius: 50px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
             box-shadow: 0 10px 20px -5px rgba(99, 25, 25, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-align: center;
         }
-        .btn:hover { background-color: var(--bordeaux-hover); transform: translateY(-4px); box-shadow: 0 15px 25px -5px rgba(99, 25, 25, 0.5); }
-        
+        .btn:hover { background-color: var(--bordeaux-hover); transform: translateY(-4px); box-shadow: 0 15px 25px -5px rgba(99, 25, 25, 0.5); color: var(--blanc);}
         .btn-outline { background-color: transparent; border: 2px solid var(--blanc); color: var(--blanc); box-shadow: none; }
         .btn-outline:hover { background-color: var(--blanc); color: var(--noir); transform: translateY(-4px); }
 
-        /* --- HEADER INTELLIGENT --- */
+        /* --- HEADER & LANG SWITCHER --- */
         header { 
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             background: rgba(250, 246, 240, 0); 
-            padding: 20px 0; transition: all 0.4s ease;
+            padding: 15px 0; transition: all 0.4s ease;
         }
         header.scrolled {
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            padding: 10px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 8px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 65px; width: auto; transition: transform 0.3s; }
+        .nav-actions { display: flex; align-items: center; gap: 15px; }
+        .logo img { height: 55px; width: auto; transition: transform 0.3s; }
         
-        .header-btn { opacity: 0; transform: translateY(-10px); transition: all 0.4s; pointer-events: none; }
+        .lang-switcher {
+            background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.1); border-radius: 20px;
+            padding: 5px 10px; font-weight: 600; font-family: 'Montserrat', sans-serif;
+            color: var(--noir); cursor: pointer; outline: none; transition: 0.3s;
+        }
+        header.scrolled .lang-switcher { background: var(--beige-fond); }
+
+        .header-btn { padding: 10px 20px; font-size: 0.9rem; opacity: 0; transform: translateY(-10px); pointer-events: none; }
         header.scrolled .header-btn { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
         /* --- HERO SECTION --- */
         .hero { 
             position: relative;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(99, 25, 25, 0.7)), url('IMG_9846.jpg') center/cover no-repeat;
-            height: 100vh; min-height: 600px; display: flex; flex-direction: column; justify-content: center;
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
             color: var(--blanc); text-align: center;
-            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; padding: 120px 20px 60px 20px;
         }
-        .hero-subtitle { font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; color: #E8D5D5; }
-        .hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 25px; }
-        .hero p { font-size: 1.2rem; font-weight: 400; max-width: 750px; margin: 0 auto 40px auto; line-height: 1.8; }
-        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .hero-subtitle { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: #E8D5D5; }
+        .hero h1 { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+        .hero p { font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 400; max-width: 750px; margin: 0 auto 30px auto; line-height: 1.6; }
+        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
-        /* --- NOTRE HISTOIRE --- */
-        .histoire { padding: 120px 20px; background-color: var(--blanc); text-align: center; }
-        .badge { background-color: var(--noir); color: var(--blanc); display: inline-block; padding: 10px 25px; font-size: 1rem; font-weight: 800; border-radius: 30px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
-        .histoire h2 { color: var(--bordeaux); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 30px; line-height: 1.2; }
-        .histoire p { font-size: 1.25rem; font-weight: 500; color: var(--gris-texte); max-width: 900px; margin: 0 auto 20px auto; line-height: 1.8; }
+        /* --- SECTIONS GÉNÉRALES --- */
+        .section-pad { padding: 80px 20px; text-align: center; }
+        .bg-blanc { background-color: var(--blanc); }
+        .bg-beige { background-color: var(--beige-fond); }
+        
+        .badge { background-color: var(--noir); color: var(--blanc); display: inline-block; padding: 8px 20px; font-size: 0.9rem; font-weight: 800; border-radius: 30px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .titre-section { color: var(--bordeaux); font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+        .texte-section { font-size: clamp(1.05rem, 3vw, 1.25rem); font-weight: 500; color: var(--gris-texte); max-width: 900px; margin: 0 auto 20px auto; line-height: 1.8; }
         .highlight-text { color: var(--bordeaux); font-weight: 800; }
 
-        /* --- CITATION INSPIRANTE --- */
-        .citation-bloc { 
-            position: relative; background-color: var(--bordeaux); color: var(--blanc); 
-            padding: 100px 20px; text-align: center; overflow: hidden;
-        }
-        .citation-guillemet {
-            position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-            font-size: 250px; font-weight: 900; font-family: serif; color: rgba(255,255,255,0.05);
-            line-height: 1; pointer-events: none;
-        }
-        .citation-texte { position: relative; z-index: 1; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 600; font-style: italic; max-width: 900px; margin: 0 auto; line-height: 1.5; }
-        .citation-auteur { position: relative; z-index: 1; margin-top: 30px; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #E8D5D5; }
+        /* --- CITATION --- */
+        .citation-bloc { position: relative; background-color: var(--bordeaux); color: var(--blanc); padding: 80px 20px; text-align: center; overflow: hidden; }
+        .citation-guillemet { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 200px; font-weight: 900; font-family: serif; color: rgba(255,255,255,0.05); line-height: 1; pointer-events: none; }
+        .citation-texte { position: relative; z-index: 1; font-size: clamp(1.3rem, 4vw, 2rem); font-weight: 600; font-style: italic; max-width: 900px; margin: 0 auto; line-height: 1.5; }
 
-        /* --- CONSTAT --- */
-        .constat { padding: 120px 20px 60px 20px; text-align: center; background-color: var(--beige-fond); }
-        .chiffre-choc { color: var(--bordeaux); font-size: clamp(4rem, 8vw, 6rem); font-weight: 900; line-height: 1; margin: 10px 0 20px 0; }
+        /* --- CONSTAT & IMPACT --- */
+        .chiffre-choc { color: var(--bordeaux); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 900; line-height: 1; margin: 15px 0; }
+        .impact-banner { background-color: var(--noir); color: var(--blanc); padding: 50px 20px; border-radius: 30px; max-width: 1100px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; text-align: center; }
+        .impact-item h3 { color: var(--bordeaux); font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 900; margin-bottom: 5px; line-height: 1; }
         
-        /* --- BANNIÈRE IMPACT --- */
-        .impact-banner { background-color: var(--noir); color: var(--blanc); padding: 70px 20px; border-radius: 40px; max-width: 1150px; margin: 0 auto 100px auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: center; }
-        .impact-item h3 { color: var(--bordeaux); font-size: 3.5rem; font-weight: 900; margin-bottom: 5px; line-height: 1; }
-        .impact-item p { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #E0E0E0; }
-
         /* --- INFOGRAPHIE & TRANSPARENCE --- */
-        .infographie { padding: 0 20px 100px 20px; text-align: center; background-color: var(--beige-fond); }
-        .infographie h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; color: var(--noir); margin-bottom: 40px; }
-        
-        .image-campagne { max-width: 950px; margin: 0 auto; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); overflow: hidden; border-bottom: 10px solid var(--bordeaux); transition: transform 0.4s ease; }
-        .image-campagne:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -12px rgba(0,0,0,0.2); }
-        
-        .transparence-texte { max-width: 850px; margin: 50px auto 0 auto; background-color: var(--blanc); padding: 45px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); text-align: center; }
-        .transparence-texte p { font-size: 1.15rem; color: var(--gris-texte); margin-bottom: 20px; line-height: 1.7; }
+        .image-campagne { max-width: 900px; margin: 0 auto; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); overflow: hidden; border-bottom: 8px solid var(--bordeaux); }
+        .transparence-texte { max-width: 850px; margin: 40px auto 0 auto; background-color: var(--blanc); padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.04); text-align: center; }
 
-        /* --- ACTIONS (Cartes Premium) --- */
-        .actions { padding: 120px 20px; background-color: var(--blanc); border-radius: 50px 50px 0 0; }
-        .actions-header { text-align: center; margin-bottom: 70px; }
-        .actions-header h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; color: var(--noir); margin-top: 15px;}
-        
-        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; max-width: 1000px; margin: 0 auto; }
-        .carte-action { 
-            background: var(--beige-fond); border-radius: 35px; overflow: hidden; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.04); transition: all 0.4s ease;
-        }
-        .carte-action:hover { box-shadow: 0 25px 50px rgba(99, 25, 25, 0.15); transform: translateY(-10px); }
-        .carte-img { width: 100%; height: 320px; overflow: hidden; position: relative; }
-        .carte-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-        .carte-action:hover .carte-img img { transform: scale(1.1); } 
-        .carte-content { padding: 45px 35px; text-align: center; }
-        .tag { color: var(--bordeaux); font-weight: 800; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; background: rgba(99, 25, 25, 0.08); padding: 8px 20px; border-radius: 30px; }
-        .carte-action h3 { font-size: 1.6rem; font-weight: 800; color: var(--noir); margin-bottom: 15px; line-height: 1.3; }
-        .carte-action p { font-size: 1.05rem; font-weight: 500; }
+        /* --- ACTIONS (CARTES) --- */
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .carte-action { background: var(--beige-fond); border-radius: 25px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.04); }
+        .carte-img { width: 100%; height: 250px; overflow: hidden; }
+        .carte-content { padding: 30px 20px; text-align: center; }
+        .tag { color: var(--bordeaux); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; background: rgba(99, 25, 25, 0.08); padding: 6px 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px;}
+        .carte-action h3 { font-size: 1.4rem; font-weight: 800; color: var(--noir); margin-bottom: 10px; }
 
         /* --- FOOTER --- */
-        footer { background-color: var(--noir); color: var(--blanc); padding: 100px 20px 40px; text-align: center; }
-        .footer-cta h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 20px; }
-        .footer-cta p { font-size: 1.2rem; margin-bottom: 40px; color: #AAA; }
-        .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; color: #777; font-weight: 500; }
-        .footer-bottom a { color: var(--blanc); font-weight: 700; margin: 0 15px; }
-        .footer-bottom a:hover { color: var(--bordeaux); }
+        footer { background-color: var(--noir); color: var(--blanc); padding: 80px 20px 40px; text-align: center; }
+        .footer-cta h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 20px; }
+        .footer-bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: #777; }
+        .footer-bottom a { color: var(--blanc); font-weight: 700; margin: 0 10px; display: inline-block; margin-top: 10px;}
 
+        /* --- MEDIA QUERIES MOBILE --- */
         @media (max-width: 768px) {
-            .hero { height: auto; padding: 180px 20px 120px 20px; }
-            .impact-banner { border-radius: 25px; padding: 50px 20px; }
-            .actions-grid { gap: 30px; }
-            .transparence-texte { padding: 30px 20px; }
+            .nav-actions { gap: 10px; }
+            .header-btn { display: none; /* Cacher le bouton soutien en haut sur mobile pour faire de la place */ }
+            header.scrolled .header-btn { display: inline-block; padding: 8px 15px; font-size: 0.8rem; }
+            .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
+            .btn { width: 100%; }
+            .impact-banner { padding: 40px 20px; border-radius: 20px; }
+            .transparence-texte { padding: 20px; }
         }
     </style>
 </head>
@@ -155,33 +139,39 @@
     <header id="header">
         <div class="container nav-content">
             <a href="#" class="logo">
-                <!-- IMPORTANT : Assurez-vous que votre logo s'appelle bien logo.png sur GitHub -->
                 <img src="logo.png" alt="100seSupport Logo">
             </a>
-            <a href="#don" class="btn header-btn">Soutenir</a>
+            <div class="nav-actions">
+                <select id="langSwitcher" class="lang-switcher" onchange="changeLang(this.value)">
+                    <option value="fr">FR</option>
+                    <option value="en">EN</option>
+                    <option value="ur">اردو</option>
+                </select>
+                <a href="#don" class="btn header-btn" data-i18n="nav_soutien">Soutenir</a>
+            </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-subtitle reveal">Achai Asaan Hai</div>
-            <h1 class="reveal delay-1">Le bien est facile</h1>
-            <p class="reveal delay-2">Apporter une aide vitale aux femmes, aux orphelins et aux familles démunies. Chaque geste compte, chaque don sauve des vies.</p>
+            <div class="hero-subtitle reveal" data-i18n="hero_subtitle">Achai Asaan Hai</div>
+            <h1 class="reveal delay-1" data-i18n="hero_title">Le bien est facile</h1>
+            <p class="reveal delay-2" data-i18n="hero_desc">Apporter une aide vitale aux femmes, aux orphelins et aux familles démunies. Chaque geste compte, chaque don sauve des vies.</p>
             <div class="hero-buttons reveal delay-3">
-                <a href="#don" class="btn">Faire un don</a>
-                <a href="#histoire" class="btn btn-outline">Notre Histoire</a>
+                <a href="#don" class="btn" data-i18n="btn_don">Faire un don</a>
+                <a href="#histoire" class="btn btn-outline" data-i18n="btn_histoire">Notre Histoire</a>
             </div>
         </div>
     </section>
 
     <!-- NOTRE HISTOIRE -->
-    <section class="histoire" id="histoire">
+    <section class="section-pad bg-blanc" id="histoire">
         <div class="container">
-            <div class="badge reveal">Notre Origine</div>
-            <h2 class="reveal delay-1">Un pont de solidarité entre la France et le Pakistan</h2>
-            <p class="reveal delay-2">Initiative caritative créée en 2021 au cœur du <span class="highlight-text">Pakistan</span>, 100seSupport est née d'une urgence : agir au plus près des populations vulnérables. Sur le terrain, notre équipe locale se mobilise pour soutenir les femmes isolées, protéger les orphelins et nourrir les familles oubliées. Une aide vitale, transmise directement de la main à la main, sans intermédiaire.</p>
-            <p class="reveal delay-3">Face à l'urgence de la situation, l'association accélère son développement avec la création de <span class="highlight-text">100seSupport France</span>. Notre ambition : bâtir une puissante chaîne de solidarité internationale pour décupler notre force d'action, et redonner un avenir aux enfants et aux mères qui ont tout perdu.</p>
+            <div class="badge reveal" data-i18n="badge_origine">Notre Origine</div>
+            <h2 class="titre-section reveal delay-1" data-i18n="histoire_titre">Un pont de solidarité entre la France et le Pakistan</h2>
+            <p class="texte-section reveal delay-2" data-i18n="histoire_p1">Initiative caritative créée en 2021 au cœur du <span class="highlight-text">Pakistan</span>, 100seSupport est née d'une urgence : agir au plus près des populations vulnérables. Sur le terrain, notre équipe locale se mobilise pour soutenir les femmes isolées, protéger les orphelins et nourrir les familles oubliées. Une aide vitale, transmise directement de la main à la main, sans intermédiaire.</p>
+            <p class="texte-section reveal delay-3" data-i18n="histoire_p2">Face à l'urgence de la situation, l'association accélère son développement avec la création de <span class="highlight-text">100seSupport France</span>. Notre ambition : bâtir une puissante chaîne de solidarité internationale pour décupler notre force d'action, et redonner un avenir aux enfants et aux mères qui ont tout perdu.</p>
         </div>
     </section>
 
@@ -189,90 +179,81 @@
     <section class="citation-bloc">
         <div class="citation-guillemet">“</div>
         <div class="container">
-            <p class="citation-texte reveal">« L'œuvre la plus aimée est d'apporter de la joie à une personne, de la soulager d'une détresse ou de chasser sa faim. »</p>
-            <p class="citation-auteur reveal delay-1">L'essence de notre engagement</p>
+            <p class="citation-texte reveal" data-i18n="citation">« L'œuvre la plus aimée est d'apporter de la joie à une personne, de la soulager d'une détresse ou de chasser sa faim. »</p>
         </div>
     </section>
 
-    <!-- CONSTAT & IMPACT -->
-    <section class="constat">
+    <!-- CONSTAT -->
+    <section class="section-pad bg-beige">
         <div class="container">
-            <div class="badge reveal">L'Urgence</div>
-            <p class="reveal delay-1" style="font-size: 1.4rem; font-weight: 700; color: var(--noir);">Selon les estimations les plus récentes,</p>
-            <div class="chiffre-choc reveal delay-2">plus de 55 millions</div>
-            <p class="constat-texte reveal delay-3">de personnes au Pakistan vivent aujourd’hui dans l’extrême pauvreté. Pour des millions de familles, trouver de quoi se nourrir ou accéder à l’eau potable reste chaque jour un défi.</p>
+            <div class="badge reveal" data-i18n="badge_urgence">L'Urgence</div>
+            <p class="reveal delay-1" style="font-size: 1.2rem; font-weight: 700; color: var(--noir);" data-i18n="constat_1">Selon les estimations les plus récentes,</p>
+            <div class="chiffre-choc reveal delay-2" data-i18n="constat_chiffre">plus de 55 millions</div>
+            <p class="texte-section reveal delay-3" data-i18n="constat_2">de personnes au Pakistan vivent aujourd’hui dans l’extrême pauvreté. Pour des millions de familles, trouver de quoi se nourrir ou accéder à l’eau potable reste chaque jour un défi.</p>
         </div>
     </section>
 
-    <!-- BANNIÈRE CHIFFRES CLÉS -->
-    <div class="container">
+    <!-- BANNIÈRE IMPACT -->
+    <div class="container" style="transform: translateY(-40px);">
         <section class="impact-banner reveal">
             <div class="impact-grid">
                 <div class="impact-item">
                     <h3>60+</h3>
-                    <p>Familles Aidées</p>
+                    <p data-i18n="impact_1">Familles Aidées</p>
                 </div>
                 <div class="impact-item">
                     <h3>3</h3>
-                    <p>Puits Construits</p>
+                    <p data-i18n="impact_2">Puits Construits</p>
                 </div>
                 <div class="impact-item">
                     <h3>100%</h3>
-                    <p>Action Terrain</p>
+                    <p data-i18n="impact_3">Action Terrain</p>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- INFOGRAPHIE & MESSAGE DE TRANSPARENCE -->
-    <section class="infographie" id="campagne">
+    <!-- INFOGRAPHIE & TRANSPARENCE -->
+    <section class="section-pad bg-beige" id="campagne" style="padding-top: 0;">
         <div class="container">
-            <h2 class="reveal">Transparence totale de nos actions</h2>
+            <h2 class="titre-section reveal" data-i18n="transparence_titre">Transparence totale de nos actions</h2>
             
             <div class="image-campagne reveal delay-1">
-                <!-- Image composition colis -->
                 <img src="IMG_9849.jpg" alt="Composition d'un colis alimentaire" onerror="this.src='IMG_9849.png'">
             </div>
 
-            <!-- BLOC DE TRANSPARENCE ENTIEREMENT EN GRAS -->
             <div class="transparence-texte reveal delay-2">
-                <p><strong>La transparence est au cœur de notre engagement. C’est pourquoi nous documentons chacune de nos distributions sur le terrain : toutes les photos et vidéos sont disponibles directement sur notre page Instagram. Vous pouvez ainsi suivre de manière concrète l’utilisation des dons et l’impact de chaque action.</strong></p>
-                <p><strong>Une question sur nos missions ou envie d’échanger avec notre équipe ? Écrivez-nous en message privé, nous serons heureux de vous répondre. Votre confiance est essentielle pour nous, et nous tenons à vous offrir toute la clarté et la proximité que vous méritez.</strong></p>
-                <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn" style="margin-top: 20px;">Voir nos actions sur Instagram</a>
+                <p data-i18n="transparence_p1"><strong>La transparence est au cœur de notre engagement. C’est pourquoi nous documentons chacune de nos distributions sur le terrain : toutes les photos et vidéos sont disponibles directement sur notre page Instagram. Vous pouvez ainsi suivre de manière concrète l’utilisation des dons et l’impact de chaque action.</strong></p>
+                <p data-i18n="transparence_p2"><strong>Une question sur nos missions ou envie d’échanger avec notre équipe ? Écrivez-nous en message privé, nous serons heureux de vous répondre. Votre confiance est essentielle pour nous, et nous tenons à vous offrir toute la clarté et la proximité que vous méritez.</strong></p>
+                <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn" style="margin-top: 20px;" data-i18n="btn_insta">Voir nos actions sur Instagram</a>
             </div>
         </div>
     </section>
 
     <!-- ACTIONS -->
-    <section class="actions">
+    <section class="section-pad bg-blanc" style="border-radius: 40px 40px 0 0;">
         <div class="container">
-            <div class="actions-header reveal">
-                <div class="badge">Résultats</div>
-                <h2>Nos réalisations grâce à l'extension France</h2>
-            </div>
+            <div class="badge reveal" data-i18n="badge_resultats">Résultats</div>
+            <h2 class="titre-section reveal delay-1" style="margin-bottom: 50px;" data-i18n="actions_titre">Nos réalisations grâce à l'extension France</h2>
             
             <div class="actions-grid">
                 <!-- CARTE 1 -->
-                <div class="carte-action reveal delay-1">
-                    <div class="carte-img">
-                        <img src="IMG_9845.jpg" alt="Distribution de colis alimentaire">
-                    </div>
+                <div class="carte-action reveal delay-2">
+                    <div class="carte-img"><img src="IMG_9845.jpg" alt="Distribution de colis alimentaire"></div>
                     <div class="carte-content">
-                        <span class="tag">Urgence Alimentaire</span>
-                        <h3>Colis de première nécessité</h3>
-                        <p>Grâce à la générosité de nos donateurs en France, plus de 60 familles ont reçu des denrées vitales (farine, riz, sucre, lentilles) pour lutter contre la malnutrition.</p>
+                        <span class="tag" data-i18n="tag_alim">Urgence Alimentaire</span>
+                        <h3 data-i18n="carte1_titre">Colis de première nécessité</h3>
+                        <p data-i18n="carte1_desc">Grâce à la générosité de nos donateurs en France, plus de 60 familles ont reçu des denrées vitales (farine, riz, sucre, lentilles) pour lutter contre la malnutrition.</p>
                     </div>
                 </div>
 
                 <!-- CARTE 2 -->
-                <div class="carte-action reveal delay-2">
-                    <div class="carte-img">
-                        <img src="IMG_9847.jpg" alt="Construction de pompes à eau">
-                    </div>
+                <div class="carte-action reveal delay-3">
+                    <div class="carte-img"><img src="IMG_9847.jpg" alt="Construction de pompes à eau"></div>
                     <div class="carte-content">
-                        <span class="tag">Accès à l'eau</span>
-                        <h3>Construction de pompes</h3>
-                        <p>L'installation et le financement de 3 pompes manuelles dans les zones isolées permettent aujourd'hui à des centaines d'enfants et d'adultes de boire sainement.</p>
+                        <span class="tag" data-i18n="tag_eau">Accès à l'eau</span>
+                        <h3 data-i18n="carte2_titre">Construction de pompes</h3>
+                        <p data-i18n="carte2_desc">L'installation et le financement de 3 pompes manuelles dans les zones isolées permettent aujourd'hui à des centaines d'enfants et d'adultes de boire sainement.</p>
                     </div>
                 </div>
             </div>
@@ -281,32 +262,29 @@
 
     <!-- FOOTER -->
     <footer id="don">
-        <div class="container footer-cta">
-            <h2 class="reveal">Il n'y a pas de petit don.</h2>
-            <p class="reveal delay-1">100 % de votre participation est directement investie sur le terrain au Pakistan.</p>
-            <br>
-            <!-- REMPLACEZ CE LIEN (#) PAR LE LIEN DE VOTRE CAGNOTTE -->
-            <a href="#" class="btn reveal delay-2" style="font-size: 1.2rem; padding: 20px 50px;">Je fais un don sécurisé</a>
+        <div class="container">
+            <h2 class="titre-section reveal" style="color: var(--blanc);" data-i18n="footer_titre">Il n'y a pas de petit don.</h2>
+            <p class="texte-section reveal delay-1" style="color: #ccc;" data-i18n="footer_desc">100 % de votre participation est directement investie sur le terrain au Pakistan.</p>
+            
+            <a href="#" class="btn reveal delay-2" style="font-size: 1.1rem; padding: 18px 40px; margin-top: 20px;" data-i18n="btn_don_securise">Je fais un don sécurisé</a>
             
             <div class="footer-bottom reveal delay-3">
-                &copy; 2024 100seSupport France | Le bien est facile.
-                <br><br>
-                <a href="https://www.instagram.com/100sesupport.fr" target="_blank">Nous suivre sur Instagram</a>
-                <a href="mailto:contact@votredomaine.com">Nous contacter</a>
+                <span data-i18n="footer_copy">&copy; 2024 100seSupport France | Le bien est facile.</span>
+                <br>
+                <a href="https://www.instagram.com/100sesupport.fr" target="_blank" data-i18n="footer_link1">Nous suivre sur Instagram</a>
+                <a href="mailto:contact@votredomaine.com" data-i18n="footer_link2">Nous contacter</a>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPT ANIMATIONS MODERNES -->
+    <!-- SCRIPT JS POUR ANIMATIONS ET TRADUCTIONS -->
     <script>
+        // --- GESTION DU SCROLL ---
         document.addEventListener('DOMContentLoaded', () => {
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
             });
 
             const reveals = document.querySelectorAll('.reveal');
@@ -317,15 +295,148 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { 
-                threshold: 0.1, 
-                rootMargin: "0px 0px -50px 0px" 
-            });
-
-            reveals.forEach(reveal => {
-                observer.observe(reveal);
-            });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            reveals.forEach(reveal => observer.observe(reveal));
         });
+
+        // --- GESTION DES LANGUES ---
+        const translations = {
+            fr: {
+                nav_soutien: "Soutenir",
+                hero_subtitle: "Achai Asaan Hai",
+                hero_title: "Le bien est facile",
+                hero_desc: "Apporter une aide vitale aux femmes, aux orphelins et aux familles démunies. Chaque geste compte, chaque don sauve des vies.",
+                btn_don: "Faire un don",
+                btn_histoire: "Notre Histoire",
+                badge_origine: "Notre Origine",
+                histoire_titre: "Un pont de solidarité entre la France et le Pakistan",
+                histoire_p1: "Initiative caritative créée en 2021 au cœur du <span class='highlight-text'>Pakistan</span>, 100seSupport est née d'une urgence : agir au plus près des populations vulnérables. Sur le terrain, notre équipe locale se mobilise pour soutenir les femmes isolées, protéger les orphelins et nourrir les familles oubliées. Une aide vitale, transmise directement de la main à la main, sans intermédiaire.",
+                histoire_p2: "Face à l'urgence de la situation, l'association accélère son développement avec la création de <span class='highlight-text'>100seSupport France</span>. Notre ambition : bâtir une puissante chaîne de solidarité internationale pour décupler notre force d'action, et redonner un avenir aux enfants et aux mères qui ont tout perdu.",
+                citation: "« L'œuvre la plus aimée est d'apporter de la joie à une personne, de la soulager d'une détresse ou de chasser sa faim. »",
+                badge_urgence: "L'Urgence",
+                constat_1: "Selon les estimations les plus récentes,",
+                constat_chiffre: "plus de 55 millions",
+                constat_2: "de personnes au Pakistan vivent aujourd’hui dans l’extrême pauvreté. Pour des millions de familles, trouver de quoi se nourrir ou accéder à l’eau potable reste chaque jour un défi.",
+                impact_1: "Familles Aidées",
+                impact_2: "Puits Construits",
+                impact_3: "Action Terrain",
+                transparence_titre: "Transparence totale de nos actions",
+                transparence_p1: "<strong>La transparence est au cœur de notre engagement. C’est pourquoi nous documentons chacune de nos distributions sur le terrain : toutes les photos et vidéos sont disponibles directement sur notre page Instagram. Vous pouvez ainsi suivre de manière concrète l’utilisation des dons et l’impact de chaque action.</strong>",
+                transparence_p2: "<strong>Une question sur nos missions ou envie d’échanger avec notre équipe ? Écrivez-nous en message privé, nous serons heureux de vous répondre. Votre confiance est essentielle pour nous, et nous tenons à vous offrir toute la clarté et la proximité que vous méritez.</strong>",
+                btn_insta: "Voir nos actions sur Instagram",
+                badge_resultats: "Résultats",
+                actions_titre: "Nos réalisations grâce à l'extension France",
+                tag_alim: "Urgence Alimentaire",
+                carte1_titre: "Colis de première nécessité",
+                carte1_desc: "Grâce à la générosité de nos donateurs en France, plus de 60 familles ont reçu des denrées vitales (farine, riz, sucre, lentilles) pour lutter contre la malnutrition.",
+                tag_eau: "Accès à l'eau",
+                carte2_titre: "Construction de pompes",
+                carte2_desc: "L'installation et le financement de 3 pompes manuelles dans les zones isolées permettent aujourd'hui à des centaines d'enfants et d'adultes de boire sainement.",
+                footer_titre: "Il n'y a pas de petit don.",
+                footer_desc: "100 % de votre participation est directement investie sur le terrain au Pakistan.",
+                btn_don_securise: "Je fais un don sécurisé",
+                footer_copy: "&copy; 2024 100seSupport France | Le bien est facile.",
+                footer_link1: "Nous suivre sur Instagram",
+                footer_link2: "Nous contacter"
+            },
+            en: {
+                nav_soutien: "Support Us",
+                hero_subtitle: "Achai Asaan Hai",
+                hero_title: "Doing good is easy",
+                hero_desc: "Providing vital aid to women, orphans, and destitute families. Every gesture counts, every donation saves lives.",
+                btn_don: "Donate",
+                btn_histoire: "Our Story",
+                badge_origine: "Our Origin",
+                histoire_titre: "A bridge of solidarity between France and Pakistan",
+                histoire_p1: "A charitable initiative created in 2021 in the heart of <span class='highlight-text'>Pakistan</span>, 100seSupport was born out of urgency: to act as closely as possible to vulnerable populations. On the ground, our local team mobilizes to support isolated women, protect orphans, and feed forgotten families. Vital aid, handed directly from hand to hand, without intermediaries.",
+                histoire_p2: "Faced with the urgency of the situation, the association is accelerating its development with the creation of <span class='highlight-text'>100seSupport France</span>. Our ambition: to build a powerful international chain of solidarity to multiply our impact and give a future back to children and mothers who have lost everything.",
+                citation: "\"The most beloved deed is to bring joy to a person, relieve them of distress, or drive away their hunger.\"",
+                badge_urgence: "The Urgency",
+                constat_1: "According to the most recent estimates,",
+                constat_chiffre: "more than 55 million",
+                constat_2: "people in Pakistan currently live in extreme poverty. For millions of families, finding enough to eat or accessing drinking water remains a daily struggle.",
+                impact_1: "Families Helped",
+                impact_2: "Wells Built",
+                impact_3: "On-field Action",
+                transparence_titre: "Total transparency of our actions",
+                transparence_p1: "<strong>Transparency is at the heart of our commitment. This is why we document each of our distributions on the ground: all photos and videos are available directly on our Instagram page. You can thus follow concretely the use of donations and the impact of each action.</strong>",
+                transparence_p2: "<strong>Have a question about our missions or want to chat with our team? Write to us in a private message, we will be happy to answer you. Your trust is essential to us, and we want to offer you all the clarity and closeness you deserve.</strong>",
+                btn_insta: "See our actions on Instagram",
+                badge_resultats: "Results",
+                actions_titre: "Our achievements through the French branch",
+                tag_alim: "Food Emergency",
+                carte1_titre: "Essential food parcels",
+                carte1_desc: "Thanks to the generosity of our donors in France, more than 60 families have received vital food (flour, rice, sugar, lentils) to fight malnutrition.",
+                tag_eau: "Access to water",
+                carte2_titre: "Construction of pumps",
+                carte2_desc: "The installation and funding of 3 manual pumps in isolated areas now allow hundreds of children and adults to drink safely.",
+                footer_titre: "There is no such thing as a small donation.",
+                footer_desc: "100% of your contribution is directly invested on the ground in Pakistan.",
+                btn_don_securise: "Make a secure donation",
+                footer_copy: "&copy; 2024 100seSupport France | Doing good is easy.",
+                footer_link1: "Follow us on Instagram",
+                footer_link2: "Contact us"
+            },
+            ur: {
+                nav_soutien: "تعاون کریں",
+                hero_subtitle: "اچھائی آسان ہے",
+                hero_title: "نیکی کرنا آسان ہے",
+                hero_desc: "خواتین، یتیموں اور غریب خاندانوں کو اہم امداد فراہم کرنا۔ ہر عمل اہم ہے، ہر عطیہ جان بچاتا ہے۔",
+                btn_don: "عطیہ دیں",
+                btn_histoire: "ہماری کہانی",
+                badge_origine: "ہماری ابتداء",
+                histoire_titre: "فرانس اور پاکستان کے درمیان یکجہتی کا پل",
+                histoire_p1: "2021 میں <span class='highlight-text'>پاکستان</span> کے دل میں شروع کی گئی ایک فلاحی مہم، 100seSupport ایک ضرورت کے تحت وجود میں آئی: کمزور آبادیوں کے قریب ترین کام کرنا۔ زمین پر، ہماری مقامی ٹیم تنہا خواتین کی مدد، یتیموں کے تحفظ اور فراموش شدہ خاندانوں کو کھانا کھلانے کے لیے متحرک ہے۔ اہم امداد، جو براہ راست ہاتھ سے ہاتھ دی جاتی ہے، بغیر کسی درمیانی واسطے کے۔",
+                histoire_p2: "صورتحال کی سنگینی کو دیکھتے ہوئے، تنظیم <span class='highlight-text'>100seSupport France</span> کے قیام کے ساتھ اپنی ترقی کو تیز کر رہی ہے۔ ہمارا مقصد: اپنے اثر کو بڑھانے اور ان بچوں اور ماؤں کو مستقبل واپس دینے کے لیے یکجہتی کی ایک طاقتور بین الاقوامی زنجیر بنانا جو سب کچھ کھو چکے ہیں۔",
+                citation: "”سب سے پسندیدہ عمل کسی شخص کو خوشی دینا، اس کی تکلیف دور کرنا یا اس کی بھوک مٹانا ہے۔“",
+                badge_urgence: "ہنگامی صورتحال",
+                constat_1: "حالیہ اندازوں کے مطابق،",
+                constat_chiffre: "5.5 کروڑ سے زیادہ",
+                constat_2: "پاکستان میں لوگ اس وقت انتہائی غربت کی زندگی گزار رہے ہیں۔ لاکھوں خاندانوں کے لیے، پیٹ بھرنے کے لیے کھانا تلاش کرنا یا پینے کا صاف پانی حاصل کرنا روزمرہ کی جدوجہد ہے۔",
+                impact_1: "خاندانوں کی مدد",
+                impact_2: "کنویں تعمیر کیے گئے",
+                impact_3: "زمینی کارروائی",
+                transparence_titre: "ہمارے کاموں میں مکمل شفافیت",
+                transparence_p1: "<strong>شفافیت ہمارے عزم کے مرکز میں ہے۔ یہی وجہ ہے کہ ہم زمین پر اپنی ہر تقسیم کو دستاویزی شکل دیتے ہیں: تمام تصاویر اور ویڈیوز براہ راست ہمارے انسٹاگرام پیج پر دستیاب ہیں۔ اس طرح آپ عطیات کے استعمال اور ہر عمل کے اثر کو ٹھوس طریقے سے فالو کر سکتے ہیں۔</strong>",
+                transparence_p2: "<strong>ہمارے مشن کے بارے میں کوئی سوال ہے یا ہماری ٹیم سے بات کرنا چاہتے ہیں؟ ہمیں پرائیویٹ میسج لکھیں، ہمیں آپ کو جواب دینے میں خوشی ہوگی۔ آپ کا اعتماد ہمارے لیے ضروری ہے، اور ہم آپ کو وہ تمام وضاحت اور قربت پیش کرنا چاہتے ہیں جس کے آپ حقدار ہیں۔</strong>",
+                btn_insta: "انسٹاگرام پر ہمارے کام دیکھیں",
+                badge_resultats: "نتائج",
+                actions_titre: "فرانسیسی شاخ کے ذریعے ہماری کامیابیاں",
+                tag_alim: "ہنگامی خوراک",
+                carte1_titre: "بنیادی ضرورت کے پیکجز",
+                carte1_desc: "فرانس میں ہمارے عطیہ دہندگان کی سخاوت کی بدولت، 60 سے زیادہ خاندانوں کو غذائی قلت سے لڑنے کے لیے اہم خوراک (آٹا، چاول، چینی، دالیں) موصول ہوئی ہیں۔",
+                tag_eau: "پانی تک رسائی",
+                carte2_titre: "پمپوں کی تعمیر",
+                carte2_desc: "الگ تھلگ علاقوں میں 3 دستی پمپوں کی تنصیب اور فنڈنگ اب سینکڑوں بچوں اور بڑوں کو محفوظ طریقے سے پانی پینے کی اجازت دیتی ہے۔",
+                footer_titre: "کوئی عطیہ چھوٹا نہیں ہوتا۔",
+                footer_desc: "آپ کا 100٪ عطیہ براہ راست پاکستان میں زمین پر لگایا جاتا ہے۔",
+                btn_don_securise: "محفوظ عطیہ کریں",
+                footer_copy: "&copy; 2024 100seSupport France | نیکی کرنا آسان ہے۔",
+                footer_link1: "انسٹاگرام پر ہمیں فالو کریں",
+                footer_link2: "ہم سے رابطہ کریں"
+            }
+        };
+
+        function changeLang(lang) {
+            document.documentElement.lang = lang;
+            
+            // Gestion du sens de lecture pour l'Urdu (De droite à gauche)
+            if(lang === 'ur') {
+                document.body.setAttribute('dir', 'rtl');
+                document.body.classList.add('lang-ur');
+            } else {
+                document.body.setAttribute('dir', 'ltr');
+                document.body.classList.remove('lang-ur');
+            }
+
+            // Remplacement des textes
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
     </script>
 </body>
 </html>
