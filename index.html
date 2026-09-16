@@ -3,168 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100seSupport France | Achai Asaan Hai</title>
-    <!-- Police Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <title>100seSupport France | Solidarité Pakistan</title>
+    <!-- Police Montserrat (identique à vos visuels) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* --- COULEURS 100seSupport --- */
+        /* --- VARIABLES DE COULEURS (Charte Insta) --- */
         :root {
-            --rouge-100se: #A81C1C; 
-            --noir-100se: #0A0A0A;  
-            --gris-clair: #FDF8F5; /* Un beige très clair inspiré de votre infographie */
-            --texte-gris: #333333;
+            --rouge: #A81C1C; /* Le rouge carmin de vos posts */
+            --rouge-hover: #8A1515;
+            --noir: #111111;
+            --gris-texte: #444444;
+            --beige: #FDF9F6; /* Le beige de votre infographie campagne */
+            --blanc: #FFFFFF;
         }
 
-        /* --- BASE --- */
+        /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { color: var(--texte-gris); line-height: 1.6; background-color: #FFFFFF; }
-        a { text-decoration: none; transition: all 0.3s ease; }
+        body { color: var(--gris-texte); line-height: 1.6; background-color: var(--blanc); overflow-x: hidden; }
+        a { text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         img { max-width: 100%; display: block; object-fit: cover; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* --- BOUTONS --- */
-        .btn-don { 
-            background-color: var(--rouge-100se); color: #FFFFFF; 
-            padding: 14px 35px; font-weight: 700; font-size: 1rem;
-            border-radius: 50px; display: inline-block;
-            box-shadow: 0 4px 15px rgba(168, 28, 28, 0.3);
+        /* --- BOUTONS MODERNES --- */
+        .btn {
+            background-color: var(--rouge); color: var(--blanc);
+            padding: 14px 32px; font-weight: 700; font-size: 1rem;
+            border-radius: 50px; display: inline-flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px -5px rgba(168, 28, 28, 0.4);
         }
-        .btn-don:hover { background-color: #851313; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(168, 28, 28, 0.4); }
+        .btn:hover { background-color: var(--rouge-hover); transform: translateY(-3px); box-shadow: 0 15px 25px -5px rgba(168, 28, 28, 0.5); }
         
-        /* --- HEADER --- */
+        /* --- HEADER GLASSMORPHISM --- */
         header { 
-            background: #FFFFFF; 
-            position: sticky; top: 0; z-index: 1000; padding: 10px 0;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px); /* Effet flou moderne */
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 12px 0; transition: all 0.3s ease;
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 60px; width: auto; } /* Intégration de votre logo */
+        .logo img { height: 55px; width: auto; transition: transform 0.3s; }
+        .logo:hover img { transform: scale(1.05); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION AVEC VAGUE --- */
         .hero { 
             position: relative;
-            background: linear-gradient(rgba(10,10,10,0.8), rgba(168, 28, 28, 0.6)), url('equipe.png') center/cover;
-            padding: 120px 20px; color: #FFFFFF;
-            border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
-            text-align: center;
+            background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(168, 28, 28, 0.7)), url('equipe.png') center/cover no-repeat;
+            padding: 180px 20px 150px 20px; 
+            color: var(--blanc); text-align: center;
+            min-height: 80vh; display: flex; flex-direction: column; justify-content: center;
         }
-        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 400; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -1px; }
+        .hero p { font-size: 1.25rem; font-weight: 500; max-width: 700px; margin: 0 auto 40px auto; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        
+        /* Forme SVG (Vague) en bas du Hero */
+        .wave-bottom {
+            position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0;
+        }
+        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 70px; }
+        .wave-bottom .shape-fill { fill: #FFFFFF; }
 
-        /* --- TITRES --- */
-        .titre-noir-bloc {
-            background-color: var(--noir-100se); color: #FFFFFF;
-            display: inline-block; padding: 8px 25px; font-size: 1.5rem;
-            font-weight: 800; margin-bottom: 20px;
-        }
-        .titre-souligne {
-            font-size: 2rem; color: var(--noir-100se); font-weight: 800;
-            margin-bottom: 30px; display: inline-block;
-            border-bottom: 4px solid var(--rouge-100se); padding-bottom: 5px;
+        /* --- BADGES (Style Insta) --- */
+        .badge-insta {
+            background-color: var(--noir); color: var(--blanc);
+            display: inline-block; padding: 10px 24px; font-size: 1.3rem;
+            font-weight: 800; margin-bottom: 30px; letter-spacing: 1px;
+            box-shadow: 4px 4px 0px var(--rouge); /* Petit effet décalé moderne */
         }
 
         /* --- SECTION CONSTAT --- */
-        .constat { padding: 80px 20px; text-align: center; background-color: #FFFFFF; }
-        .texte-gros-rouge { color: var(--rouge-100se); font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
-        .constat p { font-size: 1.2rem; margin-bottom: 20px; font-weight: 600; }
-
-        /* --- SECTION CAMPAGNE & TRANSPARENCE (Nouvelle section) --- */
-        .campagne { background-color: var(--gris-clair); padding: 80px 20px; }
-        .campagne-box {
-            background: #FFFFFF; border-radius: 20px; padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 8px solid var(--rouge-100se);
+        .constat { padding: 100px 20px; text-align: center; }
+        .chiffre-choc { 
+            color: var(--rouge); font-size: clamp(3rem, 6vw, 4.5rem); 
+            font-weight: 900; line-height: 1; margin: 20px 0; 
         }
-        .campagne-header { text-align: center; margin-bottom: 40px; }
-        .campagne-header h2 { color: var(--rouge-100se); font-size: 2.2rem; font-weight: 900; }
+        .constat-texte { font-size: 1.2rem; font-weight: 600; color: var(--noir); max-width: 800px; margin: 0 auto; }
+
+        /* --- SECTION INFOGRAPHIE (Le Beige) --- */
+        .infographie { background-color: var(--beige); padding: 100px 20px; border-radius: 40px 40px 0 0; }
+        .info-header { text-align: center; margin-bottom: 60px; }
+        .info-header h2 { font-size: 2.5rem; color: var(--noir); font-weight: 900; margin-bottom: 15px; }
         
-        .prix-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
-        .prix-carte { border: 2px dashed #E0E0E0; border-radius: 15px; padding: 25px; text-align: center; }
-        .prix-carte h3 { font-size: 1.3rem; color: var(--noir-100se); margin-bottom: 10px; }
-        .prix-carte .montant { font-size: 2.5rem; font-weight: 900; color: var(--rouge-100se); margin-bottom: 10px; }
-        .prix-carte p { font-size: 1rem; color: #555; }
+        .prix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto 60px auto; }
+        .carte-prix { 
+            background: var(--blanc); padding: 40px 30px; border-radius: 24px; text-align: center;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--rouge); transition: transform 0.3s;
+        }
+        .carte-prix:hover { transform: translateY(-10px); }
+        .carte-prix h3 { font-size: 1.2rem; font-weight: 700; color: var(--noir); margin-bottom: 15px; text-transform: uppercase; }
+        .carte-prix .montant { font-size: 3.5rem; font-weight: 900; color: var(--rouge); margin-bottom: 15px; line-height: 1; }
+        
+        .compo-container { background: var(--blanc); border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); max-width: 900px; margin: 0 auto; }
+        .compo-titre { text-align: center; font-weight: 800; font-size: 1.5rem; color: var(--noir); margin-bottom: 30px; }
+        .compo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; text-align: center; }
+        .compo-item { padding: 15px; background: var(--beige); border-radius: 16px; transition: background 0.3s; }
+        .compo-item:hover { background: #F5EAE3; }
+        .compo-item span { display: block; font-weight: 900; color: var(--rouge); font-size: 1.3rem; margin-bottom: 5px; }
+        .compo-item p { font-size: 0.9rem; font-weight: 600; color: var(--noir); }
 
-        .compo-titre { text-align: center; font-weight: 800; font-size: 1.4rem; margin-bottom: 20px; }
-        .compo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px; text-align: center; }
-        .compo-item { background: var(--gris-clair); padding: 15px; border-radius: 10px; }
-        .compo-item span { display: block; font-weight: 800; color: var(--rouge-100se); font-size: 1.1rem; }
-        .compo-item p { font-size: 0.9rem; margin-top: 5px; font-weight: 600; }
-
-        /* --- NOS ACTIONS EN IMAGES --- */
-        .actions { padding: 100px 20px; text-align: center; }
-        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; text-align: left; }
-        .card { background-color: #FFFFFF; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
-        .card-img { height: 300px; width: 100%; }
-        .card-content { padding: 30px; }
-        .card h3 { font-size: 1.4rem; font-weight: 800; color: var(--noir-100se); margin-bottom: 15px; }
-        .card .highlight { color: var(--rouge-100se); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 10px; }
+        /* --- NOS ACTIONS (Cartes Modernes) --- */
+        .actions { padding: 100px 20px; }
+        .actions-header { text-align: center; margin-bottom: 60px; }
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .carte-action { 
+            background: var(--blanc); border-radius: 24px; overflow: hidden; 
+            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.1); 
+        }
+        .carte-img { width: 100%; height: 280px; overflow: hidden; position: relative; }
+        .carte-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .carte-action:hover .carte-img img { transform: scale(1.08); } /* Effet Zoom moderne */
+        .carte-content { padding: 35px; }
+        .tag { color: var(--rouge); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 12px; }
+        .carte-action h3 { font-size: 1.5rem; font-weight: 800; color: var(--noir); margin-bottom: 15px; line-height: 1.3; }
 
         /* --- FOOTER --- */
-        footer { background-color: var(--noir-100se); color: #FFFFFF; padding: 80px 20px 40px; text-align: center; }
+        footer { background-color: var(--noir); color: var(--blanc); padding: 80px 20px 40px; text-align: center; }
         .footer-cta h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
-        .footer-cta p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto; color: #CCCCCC; }
+        .footer-cta p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto; color: #AAAAAA; }
+        .footer-bottom { margin-top: 60px; padding-top: 24px; border-top: 1px solid #222; font-size: 0.9rem; color: #666; }
+        .footer-bottom a { color: var(--blanc); font-weight: 600; }
+        .footer-bottom a:hover { color: var(--rouge); }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .prix-grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- NAVIGATION GLASSMORPHISM -->
     <header>
         <div class="container nav-content">
-            <div class="logo">
-                <img src="logo.png" alt="Logo 100seSupport">
-            </div>
-            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn-don">Soutenir</a>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="100seSupport Logo">
+            </a>
+            <a href="#don" class="btn">Soutenir</a>
         </div>
     </header>
 
-    <!-- HERO SECTION (Utilise equipe.png en fond) -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <h1>Achai Asaan Hai</h1>
             <p>Apporter une aide concrète aux familles vivant dans la précarité au Pakistan. Rejoignez notre chaîne de solidarité depuis la France.</p>
-            <a href="#campagne" class="btn-don" style="background-color: #FFFFFF; color: var(--rouge-100se);">Notre dernière campagne</a>
+            <a href="#campagne" class="btn" style="background-color: var(--blanc); color: var(--rouge);">Notre dernière campagne</a>
+        </div>
+        <!-- Vague SVG décorative -->
+        <div class="wave-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.32,201,112.72Z" class="shape-fill"></path>
+            </svg>
         </div>
     </section>
 
-    <!-- SECTION CONSTAT -->
+    <!-- CONSTAT -->
     <section class="constat">
         <div class="container">
-            <div class="titre-noir-bloc">Le constat :</div>
-            <p style="font-weight: 400;">Selon différentes estimations,</p>
-            <div class="texte-gros-rouge">plus de 55 millions</div>
-            <p style="font-weight: 400;">de personnes au Pakistan vivent sous le seuil de pauvreté.</p>
-            <p><strong>De nombreuses familles rencontrent des difficultés pour subvenir à leurs besoins essentiels, notamment l'accès à l'alimentation.</strong></p>
+            <div class="badge-insta">Le constat :</div>
+            <p style="font-size: 1.2rem; font-weight: 500;">Selon différentes estimations,</p>
+            <div class="chiffre-choc">plus de 55 millions</div>
+            <p class="constat-texte">de personnes au Pakistan vivent sous le seuil de pauvreté. De nombreuses familles rencontrent des difficultés pour subvenir à leurs besoins essentiels.</p>
         </div>
     </section>
 
-    <!-- NOUVELLE SECTION : TRANSPARENCE & COÛTS -->
-    <section class="campagne" id="campagne">
+    <!-- INFOGRAPHIE (Campagne) -->
+    <section class="infographie" id="campagne">
         <div class="container">
-            <div class="campagne-box">
-                <div class="campagne-header">
-                    <h2>L'impact de vos dons</h2>
-                    <p>Découvrez comment votre générosité se transforme en aide vitale sur le terrain.</p>
-                </div>
+            <div class="info-header">
+                <h2>L'impact de vos dons</h2>
+                <p style="font-size: 1.1rem; color: #666; font-weight: 500;">La transparence au cœur de notre action.</p>
+            </div>
 
-                <div class="prix-grid">
-                    <div class="prix-carte">
-                        <h3>Alimentation pour 1 mois</h3>
-                        <div class="montant">13 €</div>
-                        <p>Le prix d'un colis alimentaire permettant de nourrir toute une famille.</p>
-                    </div>
-                    <div class="prix-carte">
-                        <h3>Accès à l'eau potable</h3>
-                        <div class="montant">45 €</div>
-                        <p>Le prix de construction d'une pompe à eau manuelle dans un village.</p>
-                    </div>
+            <div class="prix-grid">
+                <div class="carte-prix">
+                    <h3>Objectif Alimentation</h3>
+                    <div class="montant">13 €</div>
+                    <p>1 mois de nourriture pour financer un colis alimentaire familial.</p>
                 </div>
+                <div class="carte-prix">
+                    <h3>Objectif Eau</h3>
+                    <div class="montant">45 €</div>
+                    <p>Construction d'une pompe à eau manuelle pour un village.</p>
+                </div>
+            </div>
 
-                <div class="compo-titre">Que contient un colis à 13 € ?</div>
+            <div class="compo-container">
+                <div class="compo-titre">Composition d'un colis à 13 €</div>
                 <div class="compo-grid">
                     <div class="compo-item"><span>15 KG</span><p>de Farine</p></div>
                     <div class="compo-item"><span>5 KG</span><p>de Riz</p></div>
@@ -176,47 +199,53 @@
         </div>
     </section>
 
-    <!-- NOS ACTIONS SUR LE TERRAIN -->
+    <!-- ACTIONS (Cartes avec effet zoom) -->
     <section class="actions">
         <div class="container">
-            <h2 class="titre-souligne">Nos Réalisations</h2>
+            <div class="actions-header">
+                <div class="badge-insta">Nos Réalisations</div>
+            </div>
             
             <div class="actions-grid">
-                
-                <!-- ACTION 1 : COLIS -->
-                <div class="card">
-                    <div class="card-img">
+                <!-- CARTE 1 -->
+                <div class="carte-action">
+                    <div class="carte-img">
                         <img src="colis.png" alt="Distribution de colis">
                     </div>
-                    <div class="card-content">
-                        <span class="highlight">Plus de 60 familles</span>
-                        <h3>ont pu bénéficier de colis</h3>
-                        <p>Nous distribuons des denrées de première nécessité (farine, sucre, riz, lentilles) aux foyers les plus touchés par la précarité.</p>
+                    <div class="carte-content">
+                        <span class="tag">Plus de 60 familles</span>
+                        <h3>Bénéficient de colis alimentaires</h3>
+                        <p>Grâce à vos dons, nous distribuons des denrées de première nécessité aux foyers les plus touchés par la précarité pour un mois complet.</p>
                     </div>
                 </div>
 
-                <!-- ACTION 2 : PUITS -->
-                <div class="card">
-                    <div class="card-img">
-                        <img src="puits.png" alt="Enfants utilisant une pompe à eau">
+                <!-- CARTE 2 -->
+                <div class="carte-action">
+                    <div class="carte-img">
+                        <img src="puits.png" alt="Pompe à eau">
                     </div>
-                    <div class="card-content">
-                        <span class="highlight">Et 3 puits</span>
-                        <h3>ont pu être construits</h3>
-                        <p>L'installation de pompes à eau manuelles dans les zones reculées garantit un accès vital et durable à l'eau potable.</p>
+                    <div class="carte-content">
+                        <span class="tag">3 puits construits</span>
+                        <h3>Accès à l'eau potable garanti</h3>
+                        <p>L'installation de pompes à eau manuelles dans les zones isolées permet à des centaines de personnes de boire sainement chaque jour.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
+    <!-- FOOTER CTA -->
+    <footer id="don">
         <div class="container footer-cta">
             <h2>Faites partie du changement</h2>
-            <p>100 % de vos dons financent directement nos actions sur le terrain. Ensemble, le bien est facile.</p>
-            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn-don">Faire un don maintenant</a>
+            <p>100 % de vos dons financent directement nos actions sur le terrain. Vous avez le pouvoir de changer des vies.</p>
+            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn">Faire un don maintenant</a>
+            
+            <div class="footer-bottom">
+                &copy; 2024 100seSupport France | Achai Asaan Hai
+                <br><br>
+                <a href="https://www.instagram.com/100sesupport.fr" target="_blank">Rejoignez-nous sur Instagram</a>
+            </div>
         </div>
     </footer>
 
