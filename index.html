@@ -7,37 +7,37 @@
     <!-- Police Montserrat (identique à vos visuels) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIABLES DE COULEURS (Charte Insta) --- */
+        /* --- VARIABLES DE COULEURS (Inspirées de image_d94126.png) --- */
         :root {
-            --rouge: #A81C1C; /* Le rouge carmin de vos posts */
-            --rouge-hover: #8A1515;
-            --noir: #111111;
-            --gris-texte: #444444;
-            --beige: #FDF9F6; /* Le beige de votre infographie campagne */
+            --bordeaux: #631919; /* Le rouge foncé/bordeaux de vos badges */
+            --bordeaux-hover: #4A1212;
+            --noir: #1C1C1C;
+            --gris-texte: #333333;
+            --beige-fond: #FAF6F0; /* Le beige clair en fond de votre post */
             --blanc: #FFFFFF;
         }
 
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { color: var(--gris-texte); line-height: 1.6; background-color: var(--blanc); overflow-x: hidden; }
+        body { color: var(--gris-texte); line-height: 1.6; background-color: var(--beige-fond); overflow-x: hidden; }
         a { text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         img { max-width: 100%; display: block; object-fit: cover; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         /* --- BOUTONS MODERNES --- */
         .btn {
-            background-color: var(--rouge); color: var(--blanc);
+            background-color: var(--bordeaux); color: var(--blanc);
             padding: 14px 32px; font-weight: 700; font-size: 1rem;
             border-radius: 50px; display: inline-flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 20px -5px rgba(168, 28, 28, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(99, 25, 25, 0.4);
         }
-        .btn:hover { background-color: var(--rouge-hover); transform: translateY(-3px); box-shadow: 0 15px 25px -5px rgba(168, 28, 28, 0.5); }
+        .btn:hover { background-color: var(--bordeaux-hover); transform: translateY(-3px); box-shadow: 0 15px 25px -5px rgba(99, 25, 25, 0.5); }
         
         /* --- HEADER GLASSMORPHISM --- */
         header { 
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px); /* Effet flou moderne */
+            background: rgba(250, 246, 240, 0.9); /* Beige translucide */
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
             padding: 12px 0; transition: all 0.3s ease;
@@ -49,7 +49,7 @@
         /* --- HERO SECTION AVEC VAGUE --- */
         .hero { 
             position: relative;
-            background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(168, 28, 28, 0.7)), url('equipe.png') center/cover no-repeat;
+            background: linear-gradient(rgba(28, 28, 28, 0.7), rgba(99, 25, 25, 0.7)), url('equipe.png') center/cover no-repeat;
             padding: 180px 20px 150px 20px; 
             color: var(--blanc); text-align: center;
             min-height: 80vh; display: flex; flex-direction: column; justify-content: center;
@@ -57,65 +57,54 @@
         .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -1px; }
         .hero p { font-size: 1.25rem; font-weight: 500; max-width: 700px; margin: 0 auto 40px auto; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         
-        /* Forme SVG (Vague) en bas du Hero */
+        /* Forme SVG (Vague) qui reprend la couleur beige du site */
         .wave-bottom {
             position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0;
         }
         .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 70px; }
-        .wave-bottom .shape-fill { fill: #FFFFFF; }
+        .wave-bottom .shape-fill { fill: var(--beige-fond); }
 
         /* --- BADGES (Style Insta) --- */
         .badge-insta {
             background-color: var(--noir); color: var(--blanc);
             display: inline-block; padding: 10px 24px; font-size: 1.3rem;
             font-weight: 800; margin-bottom: 30px; letter-spacing: 1px;
-            box-shadow: 4px 4px 0px var(--rouge); /* Petit effet décalé moderne */
+            box-shadow: 4px 4px 0px var(--bordeaux);
         }
 
         /* --- SECTION CONSTAT --- */
-        .constat { padding: 100px 20px; text-align: center; }
+        .constat { padding: 100px 20px 60px 20px; text-align: center; }
         .chiffre-choc { 
-            color: var(--rouge); font-size: clamp(3rem, 6vw, 4.5rem); 
+            color: var(--bordeaux); font-size: clamp(3rem, 6vw, 4.5rem); 
             font-weight: 900; line-height: 1; margin: 20px 0; 
         }
         .constat-texte { font-size: 1.2rem; font-weight: 600; color: var(--noir); max-width: 800px; margin: 0 auto; }
 
-        /* --- SECTION INFOGRAPHIE (Le Beige) --- */
-        .infographie { background-color: var(--beige); padding: 100px 20px; border-radius: 40px 40px 0 0; }
-        .info-header { text-align: center; margin-bottom: 60px; }
-        .info-header h2 { font-size: 2.5rem; color: var(--noir); font-weight: 900; margin-bottom: 15px; }
-        
-        .prix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 900px; margin: 0 auto 60px auto; }
-        .carte-prix { 
-            background: var(--blanc); padding: 40px 30px; border-radius: 24px; text-align: center;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
-            border-top: 6px solid var(--rouge); transition: transform 0.3s;
+        /* --- SECTION INFOGRAPHIE (Image directe) --- */
+        .infographie { padding: 40px 20px 100px 20px; text-align: center; }
+        .image-campagne {
+            max-width: 900px; margin: 0 auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-bottom: 8px solid var(--bordeaux);
         }
-        .carte-prix:hover { transform: translateY(-10px); }
-        .carte-prix h3 { font-size: 1.2rem; font-weight: 700; color: var(--noir); margin-bottom: 15px; text-transform: uppercase; }
-        .carte-prix .montant { font-size: 3.5rem; font-weight: 900; color: var(--rouge); margin-bottom: 15px; line-height: 1; }
-        
-        .compo-container { background: var(--blanc); border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); max-width: 900px; margin: 0 auto; }
-        .compo-titre { text-align: center; font-weight: 800; font-size: 1.5rem; color: var(--noir); margin-bottom: 30px; }
-        .compo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; text-align: center; }
-        .compo-item { padding: 15px; background: var(--beige); border-radius: 16px; transition: background 0.3s; }
-        .compo-item:hover { background: #F5EAE3; }
-        .compo-item span { display: block; font-weight: 900; color: var(--rouge); font-size: 1.3rem; margin-bottom: 5px; }
-        .compo-item p { font-size: 0.9rem; font-weight: 600; color: var(--noir); }
 
         /* --- NOS ACTIONS (Cartes Modernes) --- */
-        .actions { padding: 100px 20px; }
+        .actions { padding: 100px 20px; background-color: var(--blanc); border-radius: 40px 40px 0 0; }
         .actions-header { text-align: center; margin-bottom: 60px; }
+        .actions-header h2 { font-size: 2rem; font-weight: 900; color: var(--noir); margin-top: 10px;}
+        
         .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
         .carte-action { 
-            background: var(--blanc); border-radius: 24px; overflow: hidden; 
-            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.1); 
+            background: var(--beige-fond); border-radius: 24px; overflow: hidden; 
+            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.05); 
         }
         .carte-img { width: 100%; height: 280px; overflow: hidden; position: relative; }
         .carte-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .carte-action:hover .carte-img img { transform: scale(1.08); } /* Effet Zoom moderne */
+        .carte-action:hover .carte-img img { transform: scale(1.08); } 
         .carte-content { padding: 35px; }
-        .tag { color: var(--rouge); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 12px; }
+        .tag { color: var(--bordeaux); font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 12px; }
         .carte-action h3 { font-size: 1.5rem; font-weight: 800; color: var(--noir); margin-bottom: 15px; line-height: 1.3; }
 
         /* --- FOOTER --- */
@@ -124,13 +113,12 @@
         .footer-cta p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto; color: #AAAAAA; }
         .footer-bottom { margin-top: 60px; padding-top: 24px; border-top: 1px solid #222; font-size: 0.9rem; color: #666; }
         .footer-bottom a { color: var(--blanc); font-weight: 600; }
-        .footer-bottom a:hover { color: var(--rouge); }
-
+        .footer-bottom a:hover { color: var(--bordeaux); }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION GLASSMORPHISM -->
+    <!-- NAVIGATION -->
     <header>
         <div class="container nav-content">
             <a href="#" class="logo">
@@ -145,9 +133,9 @@
         <div class="container">
             <h1>Achai Asaan Hai</h1>
             <p>Apporter une aide concrète aux familles vivant dans la précarité au Pakistan. Rejoignez notre chaîne de solidarité depuis la France.</p>
-            <a href="#campagne" class="btn" style="background-color: var(--blanc); color: var(--rouge);">Notre dernière campagne</a>
+            <a href="#campagne" class="btn" style="background-color: var(--blanc); color: var(--bordeaux);">Notre dernière campagne</a>
         </div>
-        <!-- Vague SVG décorative -->
+        <!-- Vague SVG (Beige) -->
         <div class="wave-bottom">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.32,201,112.72Z" class="shape-fill"></path>
@@ -165,45 +153,22 @@
         </div>
     </section>
 
-    <!-- INFOGRAPHIE (Campagne) -->
+    <!-- INFOGRAPHIE (Image) -->
     <section class="infographie" id="campagne">
         <div class="container">
-            <div class="info-header">
-                <h2>L'impact de vos dons</h2>
-                <p style="font-size: 1.1rem; color: #666; font-weight: 500;">La transparence au cœur de notre action.</p>
-            </div>
-
-            <div class="prix-grid">
-                <div class="carte-prix">
-                    <h3>Objectif Alimentation</h3>
-                    <div class="montant">13 €</div>
-                    <p>1 mois de nourriture pour financer un colis alimentaire familial.</p>
-                </div>
-                <div class="carte-prix">
-                    <h3>Objectif Eau</h3>
-                    <div class="montant">45 €</div>
-                    <p>Construction d'une pompe à eau manuelle pour un village.</p>
-                </div>
-            </div>
-
-            <div class="compo-container">
-                <div class="compo-titre">Composition d'un colis à 13 €</div>
-                <div class="compo-grid">
-                    <div class="compo-item"><span>15 KG</span><p>de Farine</p></div>
-                    <div class="compo-item"><span>5 KG</span><p>de Riz</p></div>
-                    <div class="compo-item"><span>2.5 KG</span><p>de Sucre</p></div>
-                    <div class="compo-item"><span>2.5 KG</span><p>de Lentilles</p></div>
-                    <div class="compo-item"><span>1 Pack</span><p>d'Épices</p></div>
-                </div>
+            <div class="image-campagne">
+                <!-- Votre infographie intégrée directement ici -->
+                <img src="image_d94126.png" alt="Campagne de Solidarité et objectifs de la cagnotte">
             </div>
         </div>
     </section>
 
-    <!-- ACTIONS (Cartes avec effet zoom) -->
+    <!-- ACTIONS -->
     <section class="actions">
         <div class="container">
             <div class="actions-header">
-                <div class="badge-insta">Nos Réalisations</div>
+                <div class="badge-insta">Impact</div>
+                <h2>Nos réalisations grâce à l'extension France</h2>
             </div>
             
             <div class="actions-grid">
@@ -213,9 +178,9 @@
                         <img src="colis.png" alt="Distribution de colis">
                     </div>
                     <div class="carte-content">
-                        <span class="tag">Plus de 60 familles</span>
+                        <span class="tag">Plus de 60 familles aidées</span>
                         <h3>Bénéficient de colis alimentaires</h3>
-                        <p>Grâce à vos dons, nous distribuons des denrées de première nécessité aux foyers les plus touchés par la précarité pour un mois complet.</p>
+                        <p>Grâce à vos dons depuis la France, nous distribuons des denrées de première nécessité (farine, riz, sucre...) aux foyers les plus touchés par la précarité.</p>
                     </div>
                 </div>
 
@@ -239,7 +204,8 @@
         <div class="container footer-cta">
             <h2>Faites partie du changement</h2>
             <p>100 % de vos dons financent directement nos actions sur le terrain. Vous avez le pouvoir de changer des vies.</p>
-            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn">Faire un don maintenant</a>
+            <!-- Remplacez le lien # par votre HelloAsso ou Cotizup -->
+            <a href="#" class="btn">Faire un don maintenant</a>
             
             <div class="footer-bottom">
                 &copy; 2024 100seSupport France | Achai Asaan Hai
