@@ -104,8 +104,20 @@
         .impact-item h3 { color: var(--bordeaux); font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 900; margin-bottom: 5px; line-height: 1; }
         
         /* --- INFOGRAPHIE & TRANSPARENCE --- */
-        .image-campagne { max-width: 900px; margin: 0 auto; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); overflow: hidden; border-bottom: 8px solid var(--bordeaux); }
+        .image-campagne { 
+            max-width: 900px; 
+            width: fit-content; 
+            margin: 0 auto; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+            overflow: hidden; 
+            border-bottom: 8px solid var(--bordeaux);
+            background-color: var(--beige-fond);
+        }
+        .image-campagne img { width: 100%; height: auto; display: block; }
+
         .transparence-texte { max-width: 850px; margin: 40px auto 0 auto; background-color: var(--blanc); padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.04); text-align: center; }
+        .transparence-texte p { font-size: 1.1rem; line-height: 1.8; color: var(--noir); margin-bottom: 20px;}
 
         /* --- ACTIONS (CARTES) --- */
         .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
@@ -124,12 +136,12 @@
         /* --- MEDIA QUERIES MOBILE --- */
         @media (max-width: 768px) {
             .nav-actions { gap: 10px; }
-            .header-btn { display: none; /* Cacher le bouton soutien en haut sur mobile pour faire de la place */ }
+            .header-btn { display: none; }
             header.scrolled .header-btn { display: inline-block; padding: 8px 15px; font-size: 0.8rem; }
             .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
             .btn { width: 100%; }
             .impact-banner { padding: 40px 20px; border-radius: 20px; }
-            .transparence-texte { padding: 20px; }
+            .transparence-texte { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -139,7 +151,8 @@
     <header id="header">
         <div class="container nav-content">
             <a href="#" class="logo">
-                <img src="logo.png" alt="100seSupport Logo">
+                <!-- LE LOGO EST MAINTENANT EXACTEMENT "IMG_9849 (2).png" -->
+                <img src="IMG_9849 (2).png" alt="100seSupport Logo">
             </a>
             <div class="nav-actions">
                 <select id="langSwitcher" class="lang-switcher" onchange="changeLang(this.value)">
@@ -219,7 +232,7 @@
             <h2 class="titre-section reveal" data-i18n="transparence_titre">Transparence totale de nos actions</h2>
             
             <div class="image-campagne reveal delay-1">
-                <img src="IMG_9849.jpg" alt="Composition d'un colis alimentaire" onerror="this.src='IMG_9849.png'">
+                <img src="IMG_9849.png" alt="Composition d'un colis alimentaire" onerror="this.src='IMG_9849.jpg'">
             </div>
 
             <div class="transparence-texte reveal delay-2">
@@ -420,7 +433,6 @@
         function changeLang(lang) {
             document.documentElement.lang = lang;
             
-            // Gestion du sens de lecture pour l'Urdu (De droite à gauche)
             if(lang === 'ur') {
                 document.body.setAttribute('dir', 'rtl');
                 document.body.classList.add('lang-ur');
@@ -429,7 +441,6 @@
                 document.body.classList.remove('lang-ur');
             }
 
-            // Remplacement des textes
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if(translations[lang][key]) {
@@ -440,5 +451,3 @@
     </script>
 </body>
 </html>
-
-
