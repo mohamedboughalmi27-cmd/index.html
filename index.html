@@ -3,214 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100seSupport | Rendre l'espoir accessible</title>
-    <!-- Police d'écriture Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>100seSupport | Initiative Caritative</title>
+    <!-- Police professionnelle similaire à celle des grandes ONG -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIABLES --- */
+        /* --- VARIABLES (Inspiration MSF) --- */
         :root {
-            --primary: #A31212; /* Rouge asso */
-            --dark: #111827;
-            --gray-bg: #F3F4F6;
-            --text: #374151;
+            --rouge-ong: #E3000F; /* Le rouge caractéristique type MSF */
+            --noir-texte: #1A1A1A;
+            --gris-fond: #F5F5F5;
+            --gris-texte: #4A4A4A;
         }
 
         /* --- BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { color: var(--text); line-height: 1.6; background: #fff; }
-        a { text-decoration: none; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        img { max-width: 100%; border-radius: 12px; object-fit: cover; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { color: var(--noir-texte); line-height: 1.6; background-color: #FFFFFF; }
+        a { text-decoration: none; transition: all 0.3s ease; }
+        img { max-width: 100%; display: block; object-fit: cover; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 
         /* --- BOUTONS --- */
-        .btn { display: inline-block; background: var(--primary); color: #fff; padding: 14px 28px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
-        .btn:hover { background: #800e0e; }
-        .btn-outline { background: transparent; color: #fff; border: 2px solid #fff; padding: 12px 26px; }
-        .btn-outline:hover { background: #fff; color: var(--dark); }
+        .btn-don { 
+            background-color: var(--rouge-ong); color: #FFFFFF; 
+            padding: 12px 30px; font-weight: 700; font-size: 1rem;
+            text-transform: uppercase; letter-spacing: 1px; display: inline-block;
+        }
+        .btn-don:hover { background-color: #B3000C; }
+        
+        .btn-outline {
+            border: 2px solid var(--noir-texte); color: var(--noir-texte);
+            padding: 12px 30px; font-weight: 700; text-transform: uppercase; display: inline-block;
+        }
+        .btn-outline:hover { background-color: var(--noir-texte); color: #FFFFFF; }
 
-        /* --- HEADER --- */
-        header { background: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        /* --- HEADER (Navigation épurée) --- */
+        header { 
+            background: #FFFFFF; border-bottom: 1px solid #EAEAEA;
+            position: sticky; top: 0; z-index: 1000; padding: 15px 0;
+        }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
-        .logo span { color: var(--primary); }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--noir-texte); text-transform: uppercase; }
+        .logo span { color: var(--rouge-ong); }
 
         /* --- HERO SECTION --- */
-        /* Remplacez l'URL ci-dessous par la photo de votre équipe sur le terrain */
+        /* Fond sombre avec image de l'équipe ou du terrain */
         .hero { 
-            background: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop') center/cover;
-            color: white; padding: 120px 20px; text-align: center; 
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1593113565637-5271d0738f6c?q=80&w=2000&auto=format&fit=crop') center/cover;
+            padding: 150px 20px; color: #FFFFFF;
         }
-        .hero p.citation { font-style: italic; color: #D1D5DB; margin-bottom: 20px; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-        .hero p.desc { font-size: 1.1rem; max-width: 700px; margin: 0 auto 10px auto; }
-        .hero p.trust { font-size: 0.9rem; color: #9CA3AF; margin-bottom: 30px; }
-        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Calque sombre pour lire le texte */
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.1; text-transform: uppercase; }
+        .hero p { font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; }
 
-        /* --- STATS SECTION --- */
-        .stats { background: var(--dark); color: white; padding: 60px 20px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
-        .stat-item h3 { font-size: 3rem; color: var(--primary); font-weight: 800; }
-        .stat-item p { font-size: 1.1rem; font-weight: 600; }
+        /* --- SECTION INTRODUCTION --- */
+        .intro { padding: 80px 20px; text-align: center; background-color: #FFFFFF; }
+        .intro-text { max-width: 800px; margin: 0 auto; }
+        .intro h2 { font-size: 2.5rem; color: var(--rouge-ong); margin-bottom: 20px; font-weight: 900; text-transform: uppercase; }
+        .intro p { font-size: 1.1rem; color: var(--gris-texte); margin-bottom: 15px; }
+        .intro-citation { font-style: italic; font-weight: 500; font-size: 1.3rem; color: var(--noir-texte); margin-top: 30px; border-left: 4px solid var(--rouge-ong); padding-left: 20px; text-align: left; }
 
-        /* --- ABOUT SECTION --- */
-        .about { padding: 100px 20px; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .about h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 20px; }
-        .about p { margin-bottom: 15px; font-size: 1.1rem; }
+        /* --- SECTION CHIFFRES / IMPACT --- */
+        .impact { background-color: var(--noir-texte); color: #FFFFFF; padding: 60px 20px; }
+        .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
+        .impact-item h3 { font-size: 4rem; font-weight: 900; color: var(--rouge-ong); line-height: 1; margin-bottom: 10px; }
+        .impact-item p { font-size: 1.1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- ACTIONS SECTION --- */
-        .actions { background: var(--gray-bg); padding: 100px 20px; }
-        .actions-header { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
-        .actions-header h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 15px; }
-        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .card h3 { font-size: 1.5rem; color: var(--dark); margin: 15px 0; }
-        .card img { margin-top: 20px; height: 200px; width: 100%; }
+        /* --- SECTION NOS ACTIONS (Style "Cartes Projets" de MSF) --- */
+        .actions { background-color: var(--gris-fond); padding: 100px 20px; }
+        .section-header { margin-bottom: 50px; text-align: center; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+        .section-header .line { height: 4px; width: 60px; background-color: var(--rouge-ong); margin: 0 auto; }
+        
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1140px; margin: 0 auto; }
+        .card { background-color: #FFFFFF; transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card-img { height: 250px; width: 100%; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; }
+        .card-content { padding: 30px; }
+        .card-tag { color: var(--rouge-ong); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; display: block; }
+        .card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; }
+        .card p { color: var(--gris-texte); margin-bottom: 20px; font-size: 1rem; }
 
-        /* --- HOW WE ACT SECTION --- */
-        .how { padding: 100px 20px; text-align: center; }
-        .how h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 50px; }
-        .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .step h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 15px; }
-
-        /* --- QUOTE & CTA --- */
-        .quote { background: var(--dark); color: white; padding: 100px 20px; text-align: center; }
-        .quote h2 { font-size: 2rem; font-style: italic; max-width: 900px; margin: 0 auto 30px auto; font-weight: 600; line-height: 1.4; }
-        .cta { padding: 100px 20px; text-align: center; background: var(--gray-bg); }
-        .cta-box { background: #fff; padding: 60px; border-radius: 16px; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .cta-box h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 15px; }
-        .cta-box p { margin-bottom: 30px; font-size: 1.1rem; }
+        /* --- FOOTER / CALL TO ACTION --- */
+        footer { background-color: var(--noir-texte); color: #FFFFFF; padding: 80px 20px 40px; text-align: center; }
+        .footer-cta h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
+        .footer-cta p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px auto; color: #CCCCCC; }
+        .footer-bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid #333333; font-size: 0.9rem; color: #888888; }
+        .footer-bottom a { color: #FFFFFF; margin: 0 10px; }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
-            .about-grid { grid-template-columns: 1fr; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .intro h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- HEADER -->
     <header>
         <div class="container nav-content">
             <div class="logo">100se<span>Support</span></div>
-            <a href="#don" class="btn">Faire un don</a>
+            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn-don">Soutenir</a>
         </div>
     </header>
 
-    <!-- EN-TÊTE (HERO) -->
+    <!-- HERO SECTION (Bannière principale) -->
     <section class="hero">
-        <div class="container">
-            <p class="citation">« Et quiconque sauve une vie, c'est comme s'il avait sauvé l'humanité tout entière. »</p>
-            <h1>Rendre l'espoir accessible, une famille à la fois.</h1>
-            <p class="desc">De la France au Pakistan, 100seSupport mène des actions humanitaires directes et transparentes. Chaque don est utilisé sur le terrain pour apporter l'eau, la nourriture et les soins.</p>
-            <p class="trust">✅ Association à but non lucratif · Actions vérifiables · Rapports aux donateurs</p>
-            <div class="hero-buttons">
-                <a href="#don" class="btn">Faire un don</a>
-                <a href="#actions" class="btn btn-outline">Découvrir nos actions</a>
+        <div class="hero-content">
+            <h1>Rendre l'espoir accessible</h1>
+            <p>De la France au Pakistan, 100seSupport apporte une aide d'urgence médicale, alimentaire et sanitaire aux populations les plus précaires.</p>
+            <a href="#actions" class="btn-don">Découvrir nos actions</a>
+        </div>
+    </section>
+
+    <!-- INTRO / LE CONSTAT -->
+    <section class="intro">
+        <div class="container intro-text">
+            <h2>L'urgence d'agir</h2>
+            <p>Selon différentes estimations, <strong>plus de 55 millions de personnes au Pakistan</strong> vivent sous le seuil de pauvreté. De nombreuses familles rencontrent des difficultés pour subvenir à leurs besoins essentiels, notamment l'accès à l'alimentation et à l'eau potable.</p>
+            <p>100seSupport est une initiative caritative créée en 2021 au Pakistan, dont la mission est d'apporter une aide concrète aux familles. Aujourd'hui, l'association se développe en France afin de mobiliser davantage de soutien.</p>
+            
+            <div class="intro-citation">
+                « Achai Asaan Hai — Le bien est facile. Et quiconque sauve une vie, c'est comme s'il avait sauvé l'humanité tout entière. »
             </div>
         </div>
     </section>
 
-    <!-- CHIFFRES CLÉS -->
-    <section class="stats">
-        <div class="container stats-grid">
-            <div class="stat-item">
+    <!-- CHIFFRES / IMPACT -->
+    <section class="impact">
+        <div class="container impact-grid">
+            <div class="impact-item">
                 <h3>60+</h3>
-                <p>Familles soutenues</p>
+                <p>Familles aidées</p>
             </div>
-            <div class="stat-item">
+            <div class="impact-item">
                 <h3>3</h3>
                 <p>Puits construits</p>
             </div>
-            <div class="stat-item">
+            <div class="impact-item">
                 <h3>100%</h3>
-                <p>Des actions sur le terrain</p>
+                <p>Action terrain</p>
             </div>
         </div>
     </section>
 
-    <!-- QUI SOMMES-NOUS -->
-    <section class="about">
-        <div class="container about-grid">
-            <div>
-                <h2>Qui sommes-nous ?</h2>
-                <p><strong>100seSupport</strong> est né en 2021 au Pakistan, d'une conviction simple : une aide concrète et immédiate peut changer le quotidien d'une famille en situation de précarité.</p>
-                <p>Depuis, l'association s'est développée avec une antenne en France afin de mobiliser davantage de soutien. Notre équipe se rend directement dans les villages pour identifier les familles vulnérables et leur apporter une aide sans intermédiaire.</p>
-            </div>
-            <div>
-                <!-- Remplacez cette image par la vôtre -->
-                <img src="https://images.unsplash.com/photo-1593113565637-5271d0738f6c?q=80&w=2000&auto=format&fit=crop" alt="L'équipe 100seSupport">
-            </div>
-        </div>
-    </section>
-
-    <!-- ACTIONS -->
+    <!-- NOS ACTIONS (Style Cartes MSF) -->
     <section id="actions" class="actions">
         <div class="container">
-            <div class="actions-header">
-                <h2>Plus de 55 millions dans le besoin</h2>
-                <p>Au Pakistan, des millions de personnes survivent sous le seuil de pauvreté. L'accès à l'eau potable et à un repas quotidien ne devrait jamais être un luxe.</p>
+            <div class="section-header">
+                <h2>Nos Interventions</h2>
+                <div class="line"></div>
             </div>
             
             <div class="actions-grid">
+                
+                <!-- CARTE 1 : COLIS ALIMENTAIRES -->
                 <div class="card">
-                    <h3>📦 Colis alimentaires</h3>
-                    <p>Distribution de denrées de première nécessité aux familles démunies pour lutter contre la malnutrition. <strong>Plus de 60 familles déjà soutenues.</strong></p>
+                    <div class="card-img">
+                        <!-- ⚠️ UTILISEZ VOTRE IMAGE "image_3.png" ICI -->
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" alt="Enfants recevant un colis alimentaire">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Urgence Alimentaire</span>
+                        <h3>Colis de première nécessité</h3>
+                        <p>Lutte contre la précarité nutritionnelle. Depuis notre création, plus de 60 familles ont pu bénéficier de nos colis alimentaires pour subvenir à leurs besoins vitaux.</p>
+                    </div>
                 </div>
+
+                <!-- CARTE 2 : PUITS & EAU -->
                 <div class="card">
-                    <h3>💧 Accès à l'eau</h3>
-                    <p>Construction de puits dans les villages isolés pour garantir un accès durable à une eau saine. <strong>3 puits déjà construits.</strong></p>
-                    <!-- Remplacez cette image par celle de votre puits -->
-                    <img src="https://images.unsplash.com/photo-1541819349007-882470725227?q=80&w=2000&auto=format&fit=crop" alt="Puits construit">
+                    <div class="card-img">
+                        <!-- ⚠️ UTILISEZ VOTRE IMAGE "image_4.png" ICI -->
+                        <img src="https://images.unsplash.com/photo-1541819349007-882470725227?q=80&w=1000&auto=format&fit=crop" alt="Enfant buvant à un puits">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Accès à l'eau</span>
+                        <h3>Construction de puits</h3>
+                        <p>L'eau est source de vie. Nous avons déjà financé et supervisé la construction de 3 puits dans des villages isolés, garantissant un accès durable à une eau saine.</p>
+                    </div>
                 </div>
+
+                <!-- CARTE 3 : SOINS MÉDICAUX -->
                 <div class="card">
-                    <h3>💊 Soins médicaux</h3>
-                    <p>Fourniture de médicaments et soutien aux soins de santé de première nécessité pour les personnes sans accès aux traitements locaux.</p>
+                    <div class="card-img">
+                        <!-- Image d'illustration médicale -->
+                        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?q=80&w=1000&auto=format&fit=crop" alt="Soins médicaux">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-tag">Santé</span>
+                        <h3>Soins & Médicaments</h3>
+                        <p>Fourniture de médicaments et soutien aux soins de santé de première nécessité pour les personnes n'ayant aucun accès aux hôpitaux ou aux traitements locaux.</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- COMMENT ÇA MARCHE -->
-    <section class="how">
-        <div class="container">
-            <h2>Comment agissons-nous ?</h2>
-            <div class="how-grid">
-                <div class="step">
-                    <h3>1. Vous donnez</h3>
-                    <p>En quelques clics, en toute sécurité, quel que soit le montant de votre participation.</p>
-                </div>
-                <div class="step">
-                    <h3>2. Nous agissons</h3>
-                    <p>Notre équipe locale achète et distribue l'aide directement aux familles identifiées.</p>
-                </div>
-                <div class="step">
-                    <h3>3. Vous suivez l'impact</h3>
-                    <p>Photos, comptes-rendus et bilans réguliers de nos actions sur nos réseaux sociaux.</p>
-                </div>
+    <!-- FOOTER / CALL TO ACTION -->
+    <footer>
+        <div class="container footer-cta">
+            <h2>Rejoignez notre chaîne de solidarité</h2>
+            <p>Vos dons sont essentiels pour nous permettre de poursuivre nos actions d'urgence au Pakistan. Chaque participation fait la différence.</p>
+            
+            <!-- Lien vers votre Instagram ou votre cagnotte (HelloAsso, CotizUp, etc.) -->
+            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn-don">Faire un don</a>
+            
+            <div class="footer-bottom">
+                &copy; 2024 100seSupport France. Association caritative.
+                <br><br>
+                <a href="https://www.instagram.com/100sesupport.fr" target="_blank">Suivez-nous sur Instagram (@100sesupport.fr)</a>
             </div>
         </div>
-    </section>
-
-    <!-- CITATION -->
-    <section class="quote">
-        <div class="container">
-            <h2>« Derrière le chiffre de 55 millions, des femmes et des enfants souffrent en silence. Notre solidarité est leur seul espoir. »</h2>
-            <p><strong>L'équipe 100seSupport</strong> — Achai Asaan Hai</p>
-        </div>
-    </section>
-
-    <!-- APPEL AUX DONS -->
-    <section id="don" class="cta">
-        <div class="container cta-box">
-            <h2>Rejoignez la chaîne de solidarité</h2>
-            <p>Que ce soit par un don ou un partage, vous avez le pouvoir de changer des vies dès aujourd'hui. Don en ligne 100% sécurisé via notre plateforme.</p>
-            <br>
-            <!-- Remplacez le # par le lien de votre cagnotte (HelloAsso, Cotizup, etc.) -->
-            <a href="#" class="btn" target="_blank">Faire un don sécurisé</a>
-        </div>
-    </section>
+    </footer>
 
 </body>
 </html>
