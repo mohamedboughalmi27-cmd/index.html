@@ -74,14 +74,14 @@
         .hero p { font-size: 1.2rem; font-weight: 400; max-width: 750px; margin: 0 auto 40px auto; line-height: 1.8; }
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* --- NOTRE HISTOIRE (NOUVEAU) --- */
+        /* --- NOTRE HISTOIRE --- */
         .histoire { padding: 120px 20px; background-color: var(--blanc); text-align: center; }
         .badge { background-color: var(--noir); color: var(--blanc); display: inline-block; padding: 10px 25px; font-size: 1rem; font-weight: 800; border-radius: 30px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
         .histoire h2 { color: var(--bordeaux); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 30px; line-height: 1.2; }
         .histoire p { font-size: 1.25rem; font-weight: 500; color: var(--gris-texte); max-width: 900px; margin: 0 auto 20px auto; line-height: 1.8; }
         .highlight-text { color: var(--bordeaux); font-weight: 800; }
 
-        /* --- CITATION INSPIRANTE (NOUVEAU) --- */
+        /* --- CITATION INSPIRANTE --- */
         .citation-bloc { 
             position: relative; background-color: var(--bordeaux); color: var(--blanc); 
             padding: 100px 20px; text-align: center; overflow: hidden;
@@ -161,7 +161,7 @@
         <div class="container">
             <div class="hero-subtitle reveal">Le bien est facile</div>
             <h1 class="reveal delay-1">Achai Asaan Hai</h1>
-            <p class="reveal delay-2">Apporter une aide concrète aux familles vivant dans la précarité au Pakistan. Rejoignez notre chaîne de solidarité depuis la France, chaque don sauve des vies.</p>
+            <p class="reveal delay-2">Apporter une aide vitale aux femmes, aux orphelins et aux familles démunies du Pakistan. Depuis la France, rejoignez notre chaîne de solidarité : chaque geste compte, chaque don sauve des vies.</p>
             <div class="hero-buttons reveal delay-3">
                 <a href="#don" class="btn">Faire un don</a>
                 <a href="#histoire" class="btn btn-outline">Notre Histoire</a>
@@ -169,13 +169,13 @@
         </div>
     </section>
 
-    <!-- NOTRE HISTOIRE (Le lien Pakistan -> France) -->
+    <!-- NOTRE HISTOIRE -->
     <section class="histoire" id="histoire">
         <div class="container">
             <div class="badge reveal">Notre Origine</div>
             <h2 class="reveal delay-1">Un pont de solidarité entre la France et le Pakistan</h2>
-            <p class="reveal delay-2">Initiative caritative créée en 2021 au cœur du <span class="highlight-text">Pakistan</span>, 100seSupport est née d'une urgence : celle d'agir directement auprès des populations oubliées. Sur le terrain, notre équipe locale distribue l'aide vitale de la main à la main, sans intermédiaire.</p>
-            <p class="reveal delay-3">Face à l'ampleur des besoins, l'association s'étend aujourd'hui avec la création de <span class="highlight-text">100seSupport France</span>. Notre objectif est de mobiliser une nouvelle chaîne de solidarité internationale pour décupler notre impact et redonner espoir à un maximum de familles.</p>
+            <p class="reveal delay-2">Initiative caritative créée en 2021 au cœur du <span class="highlight-text">Pakistan</span>, 100seSupport est née d'une urgence : agir au plus près des populations vulnérables. Sur le terrain, notre équipe locale se mobilise au quotidien pour soutenir les femmes isolées, protéger les orphelins et nourrir les familles oubliées. Une aide vitale, remise de la main à la main, sans intermédiaire.</p>
+            <p class="reveal delay-3">Face à l'urgence de la situation, l'association accélère son développement avec la création de <span class="highlight-text">100seSupport France</span>. Notre ambition : bâtir une puissante chaîne de solidarité internationale pour décupler notre force d'action, et redonner un avenir aux enfants et aux mères qui ont tout perdu.</p>
         </div>
     </section>
 
@@ -198,7 +198,7 @@
         </div>
     </section>
 
-    <!-- BANNIÈRE CHIFFRES CLÉS (Impact) -->
+    <!-- BANNIÈRE CHIFFRES CLÉS -->
     <div class="container">
         <section class="impact-banner reveal">
             <div class="impact-grid">
@@ -223,7 +223,6 @@
         <div class="container">
             <h2 class="reveal">Transparence totale de nos actions</h2>
             <div class="image-campagne reveal delay-1">
-                <!-- Infographie beige -->
                 <img src="image_d94126.png" alt="Objectifs de la cagnotte et composition d'un colis">
             </div>
         </div>
@@ -286,7 +285,6 @@
     <!-- SCRIPT ANIMATIONS MODERNES -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Header intelligent au scroll
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 100) {
@@ -296,7 +294,6 @@
                 }
             });
 
-            // 2. Animations d'apparition au défilement (Scroll Reveal)
             const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
