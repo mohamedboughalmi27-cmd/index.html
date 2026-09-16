@@ -4,161 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>100seSupport France | Solidarité Pakistan</title>
-    <!-- Police Montserrat (identique à vos visuels) -->
+    <!-- Police Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIABLES DE COULEURS (Inspirées de image_d94126.png) --- */
+        /* --- VARIABLES DE COULEURS --- */
         :root {
-            --bordeaux: #631919; /* Le rouge foncé/bordeaux de vos badges */
+            --bordeaux: #631919; 
             --bordeaux-hover: #4A1212;
             --noir: #1C1C1C;
-            --gris-texte: #333333;
-            --beige-fond: #FAF6F0; /* Le beige clair en fond de votre post */
+            --gris-texte: #444444;
+            --beige-fond: #FAF6F0; 
             --blanc: #FFFFFF;
         }
 
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
         body { color: var(--gris-texte); line-height: 1.6; background-color: var(--beige-fond); overflow-x: hidden; }
-        a { text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        a { text-decoration: none; transition: all 0.3s ease; }
         img { max-width: 100%; display: block; object-fit: cover; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* --- BOUTONS MODERNES --- */
+        /* --- CLASSES D'ANIMATION (SCROLL REVEAL) --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* --- BOUTONS --- */
         .btn {
             background-color: var(--bordeaux); color: var(--blanc);
-            padding: 14px 32px; font-weight: 700; font-size: 1rem;
-            border-radius: 50px; display: inline-flex; align-items: center; justify-content: center;
+            padding: 16px 36px; font-weight: 700; font-size: 1.05rem;
+            border-radius: 50px; display: inline-block; text-transform: uppercase; letter-spacing: 1px;
             box-shadow: 0 10px 20px -5px rgba(99, 25, 25, 0.4);
+            transition: all 0.3s ease;
         }
         .btn:hover { background-color: var(--bordeaux-hover); transform: translateY(-3px); box-shadow: 0 15px 25px -5px rgba(99, 25, 25, 0.5); }
-        
-        /* --- HEADER GLASSMORPHISM --- */
+        .btn-outline { background-color: transparent; border: 2px solid var(--blanc); color: var(--blanc); }
+        .btn-outline:hover { background-color: var(--blanc); color: var(--noir); }
+
+        /* --- HEADER INTELLIGENT --- */
         header { 
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(250, 246, 240, 0.9); /* Beige translucide */
+            background: rgba(250, 246, 240, 0); 
+            padding: 20px 0; transition: all 0.4s ease;
+        }
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 12px 0; transition: all 0.3s ease;
+            padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 55px; width: auto; transition: transform 0.3s; }
-        .logo:hover img { transform: scale(1.05); }
+        .logo img { height: 60px; width: auto; transition: transform 0.3s; }
+        
+        /* Cacher le bouton soutien quand on est tout en haut pour l'esthétique, et l'afficher au scroll */
+        .header-btn { opacity: 0; transform: translateY(-10px); transition: all 0.4s; pointer-events: none; }
+        header.scrolled .header-btn { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
-        /* --- HERO SECTION AVEC VAGUE --- */
+        /* --- HERO SECTION --- */
         .hero { 
             position: relative;
-            background: linear-gradient(rgba(28, 28, 28, 0.7), rgba(99, 25, 25, 0.7)), url('equipe.png') center/cover no-repeat;
-            padding: 180px 20px 150px 20px; 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(99, 25, 25, 0.6)), url('equipe.png') center/cover no-repeat;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
             color: var(--blanc); text-align: center;
-            min-height: 80vh; display: flex; flex-direction: column; justify-content: center;
+            border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -1px; }
-        .hero p { font-size: 1.25rem; font-weight: 500; max-width: 700px; margin: 0 auto 40px auto; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        
-        /* Forme SVG (Vague) qui reprend la couleur beige du site */
-        .wave-bottom {
-            position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0;
-        }
-        .wave-bottom svg { display: block; width: calc(100% + 1.3px); height: 70px; }
-        .wave-bottom .shape-fill { fill: var(--beige-fond); }
+        .hero h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
+        .hero p { font-size: 1.25rem; font-weight: 500; max-width: 700px; margin: 0 auto 40px auto; }
+        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
-        /* --- BADGES (Style Insta) --- */
-        .badge-insta {
-            background-color: var(--noir); color: var(--blanc);
-            display: inline-block; padding: 10px 24px; font-size: 1.3rem;
-            font-weight: 800; margin-bottom: 30px; letter-spacing: 1px;
-            box-shadow: 4px 4px 0px var(--bordeaux);
-        }
+        /* --- CONSTAT --- */
+        .constat { padding: 120px 20px 60px 20px; text-align: center; }
+        .badge { background-color: var(--noir); color: var(--blanc); display: inline-block; padding: 10px 25px; font-size: 1.2rem; font-weight: 800; border-radius: 30px; margin-bottom: 30px; }
+        .chiffre-choc { color: var(--bordeaux); font-size: clamp(3.5rem, 8vw, 5.5rem); font-weight: 900; line-height: 1; margin: 20px 0; }
+        .constat-texte { font-size: 1.25rem; font-weight: 500; color: var(--noir); max-width: 800px; margin: 0 auto; }
 
-        /* --- SECTION CONSTAT --- */
-        .constat { padding: 100px 20px 60px 20px; text-align: center; }
-        .chiffre-choc { 
-            color: var(--bordeaux); font-size: clamp(3rem, 6vw, 4.5rem); 
-            font-weight: 900; line-height: 1; margin: 20px 0; 
-        }
-        .constat-texte { font-size: 1.2rem; font-weight: 600; color: var(--noir); max-width: 800px; margin: 0 auto; }
+        /* --- BANNIÈRE IMPACT --- */
+        .impact-banner { background-color: var(--bordeaux); color: var(--blanc); padding: 60px 20px; margin-top: 40px; }
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; max-width: 1000px; margin: 0 auto; }
+        .impact-item h3 { font-size: 3rem; font-weight: 900; margin-bottom: 5px; }
+        .impact-item p { font-size: 1.1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- SECTION INFOGRAPHIE (Image directe) --- */
-        .infographie { padding: 40px 20px 100px 20px; text-align: center; }
-        .image-campagne {
-            max-width: 900px; margin: 0 auto;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            border-bottom: 8px solid var(--bordeaux);
-        }
+        /* --- INFOGRAPHIE --- */
+        .infographie { padding: 100px 20px; text-align: center; }
+        .infographie h2 { font-size: 2.5rem; font-weight: 900; color: var(--noir); margin-bottom: 40px; }
+        .image-campagne { max-width: 900px; margin: 0 auto; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); overflow: hidden; border-bottom: 8px solid var(--bordeaux); transition: transform 0.3s; }
+        .image-campagne:hover { transform: translateY(-5px); }
 
-        /* --- NOS ACTIONS (Cartes Modernes) --- */
-        .actions { padding: 100px 20px; background-color: var(--blanc); border-radius: 40px 40px 0 0; }
+        /* --- ACTIONS (Cartes Premium) --- */
+        .actions { padding: 100px 20px; background-color: var(--blanc); border-radius: 50px 50px 0 0; }
         .actions-header { text-align: center; margin-bottom: 60px; }
-        .actions-header h2 { font-size: 2rem; font-weight: 900; color: var(--noir); margin-top: 10px;}
+        .actions-header h2 { font-size: 2.5rem; font-weight: 900; color: var(--noir); margin-top: 15px;}
         
-        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
         .carte-action { 
-            background: var(--beige-fond); border-radius: 24px; overflow: hidden; 
-            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.05); 
+            background: var(--beige-fond); border-radius: 30px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s ease;
         }
-        .carte-img { width: 100%; height: 280px; overflow: hidden; position: relative; }
-        .carte-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .carte-action:hover { box-shadow: 0 20px 40px rgba(99, 25, 25, 0.15); transform: translateY(-10px); }
+        .carte-img { width: 100%; height: 300px; overflow: hidden; position: relative; }
+        .carte-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
         .carte-action:hover .carte-img img { transform: scale(1.08); } 
-        .carte-content { padding: 35px; }
-        .tag { color: var(--bordeaux); font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 12px; }
-        .carte-action h3 { font-size: 1.5rem; font-weight: 800; color: var(--noir); margin-bottom: 15px; line-height: 1.3; }
+        .carte-content { padding: 40px; }
+        .tag { color: var(--bordeaux); font-weight: 800; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 15px; background: rgba(99, 25, 25, 0.1); padding: 5px 15px; border-radius: 20px; }
+        .carte-action h3 { font-size: 1.6rem; font-weight: 800; color: var(--noir); margin-bottom: 15px; line-height: 1.3; }
 
         /* --- FOOTER --- */
-        footer { background-color: var(--noir); color: var(--blanc); padding: 80px 20px 40px; text-align: center; }
-        .footer-cta h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; }
-        .footer-cta p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto; color: #AAAAAA; }
-        .footer-bottom { margin-top: 60px; padding-top: 24px; border-top: 1px solid #222; font-size: 0.9rem; color: #666; }
+        footer { background-color: var(--noir); color: var(--blanc); padding: 100px 20px 40px; text-align: center; }
+        .footer-cta h2 { font-size: 3rem; font-weight: 900; margin-bottom: 30px; }
+        .footer-bottom { margin-top: 80px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #888; }
         .footer-bottom a { color: var(--blanc); font-weight: 600; }
         .footer-bottom a:hover { color: var(--bordeaux); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero { height: auto; padding: 150px 20px 100px 20px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
-    <header>
+    <!-- HEADER -->
+    <header id="header">
         <div class="container nav-content">
             <a href="#" class="logo">
                 <img src="logo.png" alt="100seSupport Logo">
             </a>
-            <a href="#don" class="btn">Soutenir</a>
+            <a href="#don" class="btn header-btn">Soutenir</a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <h1>Achai Asaan Hai</h1>
-            <p>Apporter une aide concrète aux familles vivant dans la précarité au Pakistan. Rejoignez notre chaîne de solidarité depuis la France.</p>
-            <a href="#campagne" class="btn" style="background-color: var(--blanc); color: var(--bordeaux);">Notre dernière campagne</a>
-        </div>
-        <!-- Vague SVG (Beige) -->
-        <div class="wave-bottom">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.32,201,112.72Z" class="shape-fill"></path>
-            </svg>
+            <h1 class="reveal">Achai Asaan Hai</h1>
+            <p class="reveal delay-1">Apporter une aide concrète aux familles vivant dans la précarité au Pakistan. Rejoignez notre chaîne de solidarité depuis la France.</p>
+            <div class="hero-buttons reveal delay-2">
+                <a href="#don" class="btn">Faire un don</a>
+                <a href="#campagne" class="btn btn-outline">Notre Campagne</a>
+            </div>
         </div>
     </section>
 
     <!-- CONSTAT -->
     <section class="constat">
         <div class="container">
-            <div class="badge-insta">Le constat :</div>
-            <p style="font-size: 1.2rem; font-weight: 500;">Selon différentes estimations,</p>
-            <div class="chiffre-choc">plus de 55 millions</div>
-            <p class="constat-texte">de personnes au Pakistan vivent sous le seuil de pauvreté. De nombreuses familles rencontrent des difficultés pour subvenir à leurs besoins essentiels.</p>
+            <div class="badge reveal">Le constat</div>
+            <p class="reveal delay-1" style="font-size: 1.2rem; font-weight: 600;">Selon différentes estimations,</p>
+            <div class="chiffre-choc reveal delay-2">plus de 55 millions</div>
+            <p class="constat-texte reveal delay-3">de personnes au Pakistan vivent sous le seuil de pauvreté. De nombreuses familles rencontrent des difficultés pour subvenir à leurs besoins essentiels, notamment l'accès à l'alimentation.</p>
         </div>
     </section>
 
-    <!-- INFOGRAPHIE (Image) -->
+    <!-- BANNIÈRE CHIFFRES CLÉS (Impact) -->
+    <section class="impact-banner">
+        <div class="container impact-grid">
+            <div class="impact-item reveal">
+                <h3>60+</h3>
+                <p>Familles Aidées</p>
+            </div>
+            <div class="impact-item reveal delay-1">
+                <h3>3</h3>
+                <p>Puits Construits</p>
+            </div>
+            <div class="impact-item reveal delay-2">
+                <h3>100%</h3>
+                <p>Action Terrain</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIE -->
     <section class="infographie" id="campagne">
         <div class="container">
-            <div class="image-campagne">
-                <!-- Votre infographie intégrée directement ici -->
-                <img src="image_d94126.png" alt="Campagne de Solidarité et objectifs de la cagnotte">
+            <h2 class="reveal">Transparence de nos actions</h2>
+            <div class="image-campagne reveal delay-1">
+                <!-- Votre infographie beige -->
+                <img src="image_d94126.png" alt="Objectifs de la cagnotte et composition d'un colis">
             </div>
         </div>
     </section>
@@ -166,48 +190,46 @@
     <!-- ACTIONS -->
     <section class="actions">
         <div class="container">
-            <div class="actions-header">
-                <div class="badge-insta">Impact</div>
+            <div class="actions-header reveal">
+                <div class="badge">Nos Actions</div>
                 <h2>Nos réalisations grâce à l'extension France</h2>
             </div>
             
             <div class="actions-grid">
                 <!-- CARTE 1 -->
-                <div class="carte-action">
+                <div class="carte-action reveal delay-1">
                     <div class="carte-img">
-                        <img src="colis.png" alt="Distribution de colis">
+                        <img src="colis.png" alt="Distribution de colis alimentaire">
                     </div>
                     <div class="carte-content">
-                        <span class="tag">Plus de 60 familles aidées</span>
-                        <h3>Bénéficient de colis alimentaires</h3>
-                        <p>Grâce à vos dons depuis la France, nous distribuons des denrées de première nécessité (farine, riz, sucre...) aux foyers les plus touchés par la précarité.</p>
+                        <span class="tag">Urgence Alimentaire</span>
+                        <h3>Colis de première nécessité</h3>
+                        <p>Grâce à vos dons depuis la France, plus de 60 familles bénéficient de denrées (farine, riz, sucre...) pour lutter contre la malnutrition.</p>
                     </div>
                 </div>
 
                 <!-- CARTE 2 -->
-                <div class="carte-action">
+                <div class="carte-action reveal delay-2">
                     <div class="carte-img">
-                        <img src="puits.png" alt="Pompe à eau">
+                        <img src="puits.png" alt="Construction de pompes à eau">
                     </div>
                     <div class="carte-content">
-                        <span class="tag">3 puits construits</span>
-                        <h3>Accès à l'eau potable garanti</h3>
-                        <p>L'installation de pompes à eau manuelles dans les zones isolées permet à des centaines de personnes de boire sainement chaque jour.</p>
+                        <span class="tag">Accès à l'eau</span>
+                        <h3>Construction de pompes à eau</h3>
+                        <p>L'installation de 3 pompes manuelles dans les zones isolées permet aujourd'hui à des centaines de personnes de boire sainement chaque jour.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER CTA -->
+    <!-- FOOTER -->
     <footer id="don">
         <div class="container footer-cta">
-            <h2>Faites partie du changement</h2>
-            <p>100 % de vos dons financent directement nos actions sur le terrain. Vous avez le pouvoir de changer des vies.</p>
-            <!-- Remplacez le lien # par votre HelloAsso ou Cotizup -->
-            <a href="#" class="btn">Faire un don maintenant</a>
+            <h2 class="reveal">Faites partie du changement</h2>
+            <a href="https://www.instagram.com/100sesupport.fr" target="_blank" class="btn reveal delay-1">Faire un don sécurisé</a>
             
-            <div class="footer-bottom">
+            <div class="footer-bottom reveal delay-2">
                 &copy; 2024 100seSupport France | Achai Asaan Hai
                 <br><br>
                 <a href="https://www.instagram.com/100sesupport.fr" target="_blank">Rejoignez-nous sur Instagram</a>
@@ -215,5 +237,38 @@
         </div>
     </footer>
 
+    <!-- SCRIPT POUR LES ANIMATIONS MODERNES (SCROLL REVEAL ET HEADER) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Changement du Header au scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // 2. Animations d'apparition au défilement (Scroll Reveal)
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optionnel : arrêter d'observer une fois animé pour que ça reste affiché
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1, // Déclenche quand 10% de l'élément est visible
+                rootMargin: "0px 0px -50px 0px" 
+            });
+
+            reveals.forEach(reveal => {
+                observer.observe(reveal);
+            });
+        });
+    </script>
 </body>
 </html>
