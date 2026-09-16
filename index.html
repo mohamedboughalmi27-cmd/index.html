@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100seSupport | Rendre l'espoir accessible</title>
+    <!-- Police d'écriture Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --primary: #A31212; /* Rouge asso */
+            --dark: #111827;
+            --gray-bg: #F3F4F6;
+            --text: #374151;
+        }
+
+        /* --- BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { color: var(--text); line-height: 1.6; background: #fff; }
+        a { text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        img { max-width: 100%; border-radius: 12px; object-fit: cover; }
+
+        /* --- BOUTONS --- */
+        .btn { display: inline-block; background: var(--primary); color: #fff; padding: 14px 28px; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+        .btn:hover { background: #800e0e; }
+        .btn-outline { background: transparent; color: #fff; border: 2px solid #fff; padding: 12px 26px; }
+        .btn-outline:hover { background: #fff; color: var(--dark); }
+
+        /* --- HEADER --- */
+        header { background: #fff; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--dark); }
+        .logo span { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        /* Remplacez l'URL ci-dessous par la photo de votre équipe sur le terrain */
+        .hero { 
+            background: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop') center/cover;
+            color: white; padding: 120px 20px; text-align: center; 
+        }
+        .hero p.citation { font-style: italic; color: #D1D5DB; margin-bottom: 20px; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .hero p.desc { font-size: 1.1rem; max-width: 700px; margin: 0 auto 10px auto; }
+        .hero p.trust { font-size: 0.9rem; color: #9CA3AF; margin-bottom: 30px; }
+        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+        /* --- STATS SECTION --- */
+        .stats { background: var(--dark); color: white; padding: 60px 20px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; }
+        .stat-item h3 { font-size: 3rem; color: var(--primary); font-weight: 800; }
+        .stat-item p { font-size: 1.1rem; font-weight: 600; }
+
+        /* --- ABOUT SECTION --- */
+        .about { padding: 100px 20px; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 20px; }
+        .about p { margin-bottom: 15px; font-size: 1.1rem; }
+
+        /* --- ACTIONS SECTION --- */
+        .actions { background: var(--gray-bg); padding: 100px 20px; }
+        .actions-header { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
+        .actions-header h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 15px; }
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .card h3 { font-size: 1.5rem; color: var(--dark); margin: 15px 0; }
+        .card img { margin-top: 20px; height: 200px; width: 100%; }
+
+        /* --- HOW WE ACT SECTION --- */
+        .how { padding: 100px 20px; text-align: center; }
+        .how h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 50px; }
+        .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .step h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 15px; }
+
+        /* --- QUOTE & CTA --- */
+        .quote { background: var(--dark); color: white; padding: 100px 20px; text-align: center; }
+        .quote h2 { font-size: 2rem; font-style: italic; max-width: 900px; margin: 0 auto 30px auto; font-weight: 600; line-height: 1.4; }
+        .cta { padding: 100px 20px; text-align: center; background: var(--gray-bg); }
+        .cta-box { background: #fff; padding: 60px; border-radius: 16px; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .cta-box h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 15px; }
+        .cta-box p { margin-bottom: 30px; font-size: 1.1rem; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container nav-content">
+            <div class="logo">100se<span>Support</span></div>
+            <a href="#don" class="btn">Faire un don</a>
+        </div>
+    </header>
+
+    <!-- EN-TÊTE (HERO) -->
+    <section class="hero">
+        <div class="container">
+            <p class="citation">« Et quiconque sauve une vie, c'est comme s'il avait sauvé l'humanité tout entière. »</p>
+            <h1>Rendre l'espoir accessible, une famille à la fois.</h1>
+            <p class="desc">De la France au Pakistan, 100seSupport mène des actions humanitaires directes et transparentes. Chaque don est utilisé sur le terrain pour apporter l'eau, la nourriture et les soins.</p>
+            <p class="trust">✅ Association à but non lucratif · Actions vérifiables · Rapports aux donateurs</p>
+            <div class="hero-buttons">
+                <a href="#don" class="btn">Faire un don</a>
+                <a href="#actions" class="btn btn-outline">Découvrir nos actions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHIFFRES CLÉS -->
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>60+</h3>
+                <p>Familles soutenues</p>
+            </div>
+            <div class="stat-item">
+                <h3>3</h3>
+                <p>Puits construits</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Des actions sur le terrain</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUI SOMMES-NOUS -->
+    <section class="about">
+        <div class="container about-grid">
+            <div>
+                <h2>Qui sommes-nous ?</h2>
+                <p><strong>100seSupport</strong> est né en 2021 au Pakistan, d'une conviction simple : une aide concrète et immédiate peut changer le quotidien d'une famille en situation de précarité.</p>
+                <p>Depuis, l'association s'est développée avec une antenne en France afin de mobiliser davantage de soutien. Notre équipe se rend directement dans les villages pour identifier les familles vulnérables et leur apporter une aide sans intermédiaire.</p>
+            </div>
+            <div>
+                <!-- Remplacez cette image par la vôtre -->
+                <img src="https://images.unsplash.com/photo-1593113565637-5271d0738f6c?q=80&w=2000&auto=format&fit=crop" alt="L'équipe 100seSupport">
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIONS -->
+    <section id="actions" class="actions">
+        <div class="container">
+            <div class="actions-header">
+                <h2>Plus de 55 millions dans le besoin</h2>
+                <p>Au Pakistan, des millions de personnes survivent sous le seuil de pauvreté. L'accès à l'eau potable et à un repas quotidien ne devrait jamais être un luxe.</p>
+            </div>
+            
+            <div class="actions-grid">
+                <div class="card">
+                    <h3>📦 Colis alimentaires</h3>
+                    <p>Distribution de denrées de première nécessité aux familles démunies pour lutter contre la malnutrition. <strong>Plus de 60 familles déjà soutenues.</strong></p>
+                </div>
+                <div class="card">
+                    <h3>💧 Accès à l'eau</h3>
+                    <p>Construction de puits dans les villages isolés pour garantir un accès durable à une eau saine. <strong>3 puits déjà construits.</strong></p>
+                    <!-- Remplacez cette image par celle de votre puits -->
+                    <img src="https://images.unsplash.com/photo-1541819349007-882470725227?q=80&w=2000&auto=format&fit=crop" alt="Puits construit">
+                </div>
+                <div class="card">
+                    <h3>💊 Soins médicaux</h3>
+                    <p>Fourniture de médicaments et soutien aux soins de santé de première nécessité pour les personnes sans accès aux traitements locaux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMENT ÇA MARCHE -->
+    <section class="how">
+        <div class="container">
+            <h2>Comment agissons-nous ?</h2>
+            <div class="how-grid">
+                <div class="step">
+                    <h3>1. Vous donnez</h3>
+                    <p>En quelques clics, en toute sécurité, quel que soit le montant de votre participation.</p>
+                </div>
+                <div class="step">
+                    <h3>2. Nous agissons</h3>
+                    <p>Notre équipe locale achète et distribue l'aide directement aux familles identifiées.</p>
+                </div>
+                <div class="step">
+                    <h3>3. Vous suivez l'impact</h3>
+                    <p>Photos, comptes-rendus et bilans réguliers de nos actions sur nos réseaux sociaux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CITATION -->
+    <section class="quote">
+        <div class="container">
+            <h2>« Derrière le chiffre de 55 millions, des femmes et des enfants souffrent en silence. Notre solidarité est leur seul espoir. »</h2>
+            <p><strong>L'équipe 100seSupport</strong> — Achai Asaan Hai</p>
+        </div>
+    </section>
+
+    <!-- APPEL AUX DONS -->
+    <section id="don" class="cta">
+        <div class="container cta-box">
+            <h2>Rejoignez la chaîne de solidarité</h2>
+            <p>Que ce soit par un don ou un partage, vous avez le pouvoir de changer des vies dès aujourd'hui. Don en ligne 100% sécurisé via notre plateforme.</p>
+            <br>
+            <!-- Remplacez le # par le lien de votre cagnotte (HelloAsso, Cotizup, etc.) -->
+            <a href="#" class="btn" target="_blank">Faire un don sécurisé</a>
+        </div>
+    </section>
+
+</body>
+</html>
