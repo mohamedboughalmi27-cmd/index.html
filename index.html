@@ -123,17 +123,17 @@
         .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
         .carte-action { background: var(--beige-fond); border-radius: 25px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.04); }
         
-        /* MODIFICATION : Hauteur augmentée et recadrage centré sur les visages */
+        /* HAUTEUR POUR ORDINATEUR & RECADRAGE VISAGES */
         .carte-img { 
             width: 100%; 
-            height: 420px; /* Plus haut pour l'ordinateur */
+            height: 420px; 
             overflow: hidden; 
         }
         .carte-img img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center 40%; /* Cadre sur les visages au lieu du toit */
+            object-position: center 40%; 
         }
         
         .carte-content { padding: 30px 20px; text-align: center; }
@@ -146,17 +146,54 @@
         .footer-bottom { margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: #777; }
         .footer-bottom a { color: var(--blanc); font-weight: 700; margin: 0 10px; display: inline-block; margin-top: 10px;}
 
-        /* --- MEDIA QUERIES MOBILE --- */
+        /* =========================================
+           --- MEDIA QUERIES MOBILE (SMARTPHONES) --- 
+           ========================================= */
         @media (max-width: 768px) {
             .nav-actions { gap: 10px; }
-            .header-btn { display: none; }
+            .header-btn { display: none; /* Cacher le bouton header en haut pour alléger */ }
             header.scrolled .header-btn { display: inline-block; padding: 8px 15px; font-size: 0.8rem; }
-            .hero-buttons { flex-direction: column; width: 100%; padding: 0 20px; }
-            .btn { width: 100%; }
-            .impact-banner { padding: 40px 20px; border-radius: 20px; }
-            .transparence-texte { padding: 25px 20px; }
-            /* Ajustement de la hauteur pour les téléphones */
-            .carte-img { height: 320px; }
+            
+            /* Ajustement Hero */
+            .hero { min-height: 85vh; padding: 110px 15px 50px 15px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+            .hero h1 { font-size: 2.2rem; margin-bottom: 15px; }
+            .hero p { font-size: 1.05rem; margin-bottom: 25px; }
+            .hero-buttons { flex-direction: column; width: 100%; padding: 0; gap: 12px; }
+            .btn { width: 100%; padding: 16px 20px; font-size: 1.05rem; }
+            
+            /* Ajustement Sections */
+            .section-pad { padding: 50px 15px; }
+            .titre-section { font-size: 1.7rem; }
+            .texte-section { font-size: 1rem; }
+            .badge { font-size: 0.8rem; padding: 6px 15px; margin-bottom: 15px; }
+            
+            /* Ajustement Citation */
+            .citation-bloc { padding: 60px 15px; }
+            .citation-texte { font-size: 1.25rem; }
+            .citation-guillemet { font-size: 120px; top: -15px; }
+            
+            /* Constat & Impact */
+            .chiffre-choc { font-size: 3rem; margin: 10px 0; }
+            .impact-banner { padding: 30px 15px; border-radius: 20px; }
+            .impact-item h3 { font-size: 2.5rem; }
+            .impact-item p { font-size: 0.9rem; }
+            
+            /* Transparence & Infographie */
+            .image-campagne { width: 100%; border-bottom-width: 5px; border-radius: 15px; }
+            .transparence-texte { padding: 25px 15px; margin-top: 30px; }
+            .transparence-texte p { font-size: 1rem; }
+            
+            /* Ajustement des Cartes pour les petits écrans */
+            .actions-grid { gap: 25px; grid-template-columns: 1fr; } /* Force 1 seule colonne */
+            .carte-img { height: 240px; } /* Plus compact sur mobile */
+            .carte-action h3 { font-size: 1.2rem; }
+            .carte-content { padding: 25px 15px; }
+            
+            /* Ajustement Footer */
+            footer { padding: 60px 15px 30px; }
+            .footer-cta h2 { font-size: 1.8rem; }
+            .footer-bottom { margin-top: 40px; }
+            .footer-bottom a { display: block; margin: 10px 0; }
         }
     </style>
 </head>
