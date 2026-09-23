@@ -120,19 +120,22 @@
         .transparence-texte p { font-size: 1.1rem; line-height: 1.8; color: var(--noir); margin-bottom: 20px;}
 
         /* --- ACTIONS (CARTES) --- */
-        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
+        .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
         .carte-action { background: var(--beige-fond); border-radius: 25px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.04); }
+        
+        /* MODIFICATION : Hauteur augmentée et recadrage centré sur les visages */
         .carte-img { 
             width: 100%; 
-            height: 300px; /* HAUTEUR AJUSTÉE POUR ORDINATEUR */
+            height: 420px; /* Plus haut pour l'ordinateur */
             overflow: hidden; 
         }
         .carte-img img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: top center; /* RECADRAGE POUR NE PAS COUPER LES VISAGES */
+            object-position: center 40%; /* Cadre sur les visages au lieu du toit */
         }
+        
         .carte-content { padding: 30px 20px; text-align: center; }
         .tag { color: var(--bordeaux); font-weight: 800; font-size: 0.85rem; text-transform: uppercase; background: rgba(99, 25, 25, 0.08); padding: 6px 15px; border-radius: 20px; display: inline-block; margin-bottom: 15px;}
         .carte-action h3 { font-size: 1.4rem; font-weight: 800; color: var(--noir); margin-bottom: 10px; }
@@ -152,7 +155,8 @@
             .btn { width: 100%; }
             .impact-banner { padding: 40px 20px; border-radius: 20px; }
             .transparence-texte { padding: 25px 20px; }
-            .carte-img { height: 250px; /* HAUTEUR POUR MOBILE */ }
+            /* Ajustement de la hauteur pour les téléphones */
+            .carte-img { height: 320px; }
         }
     </style>
 </head>
@@ -162,7 +166,6 @@
     <header id="header">
         <div class="container nav-content">
             <a href="#" class="logo">
-                <!-- LE LOGO EST MAINTENANT EXACTEMENT "IMG_9849 (2).png" -->
                 <img src="IMG_9849 (2).png" alt="100seSupport Logo">
             </a>
             <div class="nav-actions">
@@ -277,7 +280,7 @@
                     <div class="carte-content">
                         <span class="tag" data-i18n="tag_eau">Accès à l'eau</span>
                         <h3 data-i18n="carte2_titre">Construction de pompes</h3>
-                        <p data-i18n="carte2_desc">L'installation et le financement de 3 pompes manuelles dans les zones isolées позволяют aujourd'hui à des centaines d'enfants et d'adultes de boire sainement.</p>
+                        <p data-i18n="carte2_desc">L'installation et le financement de 3 pompes manuelles dans les zones isolées permettent aujourd'hui à des centaines d'enfants et d'adultes de boire sainement.</p>
                     </div>
                 </div>
             </div>
